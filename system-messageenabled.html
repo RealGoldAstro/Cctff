@@ -1,0 +1,839 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>System Message · Message Enabled</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+    <!-- Add favicon here -->
+    <link rel="icon" type="image/png" href="Assets/Logo.png">
+    
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+    <!-- Highlight.js (optional) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/styles/atom-one-dark.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/highlight.min.js"></script>
+
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="main-wrapper">
+    <!-- Sidebar -->
+ <aside class="sidebar no-scrollbar">
+        <div class="sidebar-inner">
+
+            <!-- Logo / title -->
+            <div class="sidebar-logo">
+                <div class="sidebar-logo-icon">
+                    <img src="Assets/Logo.png" alt="Logo">
+                </div>
+                <div class="sidebar-logo-text">
+                    <div class="sidebar-logo-title">Vault Docs</div>
+                    <div class="sidebar-logo-subtitle">Versatile Asset Utility Library Tools</div>
+                </div>
+            </div>
+
+            <!-- Nav -->
+            <div class="sidebar-nav-section" style="margin-top:0.9rem;">
+                <!-- Overview -->
+                <div class="nav-parent-row">
+                    <a href="index.html" class="nav-link-parent">Overview</a>
+                </div>
+
+                <!-- CCTFF group -->
+                <div class="nav-parent-row" data-toggle="cctff-main">
+                    <a href="cctff.html" class="nav-link-parent">CCTFF</a>
+                    <i class="fas fa-chevron-right nav-chevron open"></i>
+                </div>
+                <ul id="cctff-main" class="nav-list nav-children">
+                    <li class="nav-item">
+                        <a href="cctff.html" class="nav-child-link">Overview</a>
+                    </li>
+
+                    <!-- Tags group (this page) -->
+                    <li class="nav-item">
+                        <div class="nav-parent-row" data-toggle="tags-sub">
+                            <a href="tags.html" class="nav-link-parent">Tags</a>
+                            <i class="fas fa-chevron-right nav-chevron"></i>
+                        </div>
+                        <ul id="tags-sub" class="nav-children hidden">
+
+                            <!-- Api Index -->
+                            <li class="nav-item">
+                                <a href="tags.html" class="nav-child-link">API index</a>
+                            </li>
+
+                            <!-- Give -->
+                            <li class="nav-item">
+                                <a href="tags-give.html" class="nav-child-link">TagAPI:Give</a>
+                            </li>
+
+                            <!-- Remove -->
+                            <li class="nav-item">
+                                <a href="tags-remove.html" class="nav-child-link">TagAPI:Remove</a>
+                            </li>
+
+                            <!-- Equip -->
+                            <li class="nav-item">
+                                <a href="tags-equip.html" class="nav-child-link">TagApi:Epuip</a>
+                            </li>
+                            
+                            <!-- Unequip -->
+                            <li class="nav-item">
+                                <a href="tags-unequip.html" class="nav-child-link">TagAPI:Unequip</a>
+                            </li>
+
+                            <!-- Get Owned -->
+                            <li class="nav-item">
+                                <a href="tags-getowned.html" class="nav-child-link">TagAPI:GetOwned</a>
+                            </li>
+
+                            <!-- Get Equipped -->
+                            <li class="nav-item">
+                                <a href="tags-equipped.html" class="nav-child-link">TagAPI:GetEquipped</a>
+                            </li>
+
+                            <!-- Has Tag -->
+                            <li class="nav-item">
+                                <a href="tags-hastag.html" class="nav-child-link">TagAPI:HasTag</a>
+                            </li>
+
+                            <!-- Is Equipped -->
+                            <li class="nav-item">
+                                <a href="tags-isequipped.html" class="nav-child-link">TagAPI:IsEquipped</a>
+                            </li>
+
+                            <!-- Clear All -->
+                            <li class="nav-item">
+                                <a href="tags-clearall.html" class="nav-child-link">TagAPI:ClearAll</a>
+                            </li>
+                            
+                            <!-- Unequip All -->
+                            <li class="nav-item">
+                                <a href="tags-unequipall.html" class="nav-child-link">TagAPI:UnequipAll</a>
+                            </li>
+
+                            <!-- Get Max Slots -->
+                            <li class="nav-item">
+                                <a href="tags-getmaxslots.html" class="nav-child-link">TagAPI:GetMaxSlots</a>
+                            </li>
+
+                            <!-- Get Available Slots -->
+                            <li class="nav-item">
+                                <a href="tags-getavailableslots.html" class="nav-child-link">TagAPI:GetAvailableSlots</a>
+                            </li>
+
+                        </ul>
+                    </li>
+
+                    <!-- Leaderboard Tags -->
+                    <li class="nav-item">
+                        <div class="nav-parent-row" data-toggle="leaderboard-sub">
+                            <a href="leaderboard.html" class="nav-link-parent">Leaderboard Tags</a>
+                            <i class="fas fa-chevron-right nav-chevron"></i>
+                        </div>
+                        <ul id="leaderboard-sub" class="nav-children hidden">
+                            
+                            <!-- Api Index -->
+                            <li class="nav-item">
+                                <a href="leaderboard.html" class="nav-child-link">API index</a>
+                            </li>
+
+                            <!-- Give Leaderboard Tag -->
+                            <li class="nav-item">
+                                <a href="leaderboard-givetag.html" class="nav-child-link">TagAPI:GiveLeaderboardTag</a>
+                            </li>
+
+                            <!-- Update Leaderboard Tag -->
+                            <li class="nav-item">
+                                <a href="leaderboard-updatetag.html" class="nav-child-link">TagAPI:UpdateLeaderboardTag</a>
+                            </li>
+
+                            <!-- Remove Leaderboard Tag -->
+                            <li class="nav-item">
+                                <a href="leaderboard-removetag.html" class="nav-child-link">TagAPI:RemoveLeaderboardTag</a>
+                            </li>
+
+                            <!-- Get Leaderbaord Tag -->
+                            <li class="nav-item">
+                                <a href="leaderboard-gettag.html" class="nav-child-link">TagAPI:GetLeaderboardTagText</a>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <!-- System Messages -->
+                    <li class="nav-item">
+                        <div class="nav-parent-row" data-toggle="system-sub">
+                            <a href="system.html" class="nav-link-parent active">System Messages</a>
+                            <i class="fas fa-chevron-right nav-chevron open"></i>
+                        </div>
+                        <ul id="system-sub" class="nav-children">
+
+                            <!-- Api Index -->
+                            <li class="nav-item">
+                                <a href="system.html" class="nav-child-link">API index</a>
+                            </li>
+
+                            <!-- Send System Message -->
+                            <li class="nav-item">
+                                <a href="system-sendmessage.html" class="nav-child-link">TagAPI:SendSystemMessage</a>
+                            </li>
+
+                            <!-- Update Client Settings -->
+                            <li class="nav-item">
+                                <a href="system-updatesettings.html" class="nav-child-link">TagAPI:UpdateClientSettings</a>
+                            </li>
+
+                            <!-- Is System Message Enabled -->
+                            <li class="nav-item">
+                                <a href="system-messageenabled.html" class="nav-child-link active">TagAPI:IsSystemMessageEnabled</a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </aside>
+    <!-- Main content -->
+<main class="content-wrapper">
+    <div class="content-inner">
+        <h1>TagAPI:IsSystemMessageEnabled</h1>
+        <p>The <code>TagAPI:IsSystemMessageEnabled</code> method checks whether a specific system message type is enabled for a player based on their client settings. This allows respecting player preferences before sending notifications.</p>
+        <h2>Overview</h2>
+        <div class="overview-grid">
+            <div class="overview-item">
+                <div class="overview-label">Execution Context</div>
+                <div class="overview-value"><code>Server</code>, <code>Client</code></div>
+            </div>
+            <div class="overview-item">
+                <div class="overview-label">Script Type</div>
+                <div class="overview-value">Server Script, Local Script</div>
+            </div>
+            <div class="overview-item">
+                <div class="overview-label">Returns</div>
+                <div class="overview-value"><code>boolean</code></div>
+            </div>
+            <div class="overview-item">
+                <div class="overview-label">Side Effects</div>
+                <div class="overview-value">None - read-only operation</div>
+            </div>
+        </div>
+
+        <h2>Syntax</h2>
+        <p><code>local isEnabled = TagAPI:IsSystemMessageEnabled(player: Player, messageName: string)</code></p>
+
+        <table class="param-table">
+            <thead>
+                <tr>
+                    <th>Parameter</th>
+                    <th>Type</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><code>player</code></td>
+                    <td><code>Player</code></td>
+                    <td>The player instance to check message preferences for</td>
+                </tr>
+                <tr>
+                    <td><code>messageName</code></td>
+                    <td><code>string</code></td>
+                    <td>The message identifier to check (e.g., "ServerRestart", "GameTip")</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h2>Return Values</h2>
+        <table class="param-table">
+            <thead>
+                <tr>
+                    <th>Return</th>
+                    <th>Type</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><code>isEnabled</code></td>
+                    <td><code>boolean</code></td>
+                    <td>True if the player has the message type enabled (or no preference set), false if disabled</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h2>Basic Usage</h2>
+        <p>Check if a player has a message type enabled.</p>
+        <div class="code-block-wrapper">
+            <div class="code-block-header">
+                <span>Lua</span>
+                <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+            </div>
+            <pre><code>local ReplicatedStorage = game:GetService("ReplicatedStorage")
+local CCTFF = require(ReplicatedStorage:WaitForChild("CCTFF"))
+local TagAPI = CCTFF.TagAPI
+
+local isEnabled = TagAPI:IsSystemMessageEnabled(player, "GameTip")
+if isEnabled then
+    print(player.Name .. " has tips enabled")
+else
+    print(player.Name .. " has tips disabled")
+end</code></pre>
+        </div>
+
+        <h2>Conditional Message Sending</h2>
+        <p>Only send messages to players who have them enabled.</p>
+        <div class="code-block-wrapper">
+            <div class="code-block-header">
+                <span>Lua</span>
+                <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+            </div>
+            <pre><code>local function sendToEnabledPlayers(messageName, systemTag, content)
+    for _, player in ipairs(game.Players:GetPlayers()) do
+        if TagAPI:IsSystemMessageEnabled(player, messageName) then
+            -- Send message only to this player
+            local notifyRemote = ReplicatedStorage.NotifyPlayer
+            notifyRemote:FireClient(player, content)
+        end
+    end
+end
+
+sendToEnabledPlayers("GameTip", "Info", "💡 Tip: Visit the shop daily!")</code></pre>
+        </div>
+
+        <h2>Filter Recipients</h2>
+        <p>Build a list of players who have a message type enabled.</p>
+        <div class="code-block-wrapper">
+            <div class="code-block-header">
+                <span>Lua</span>
+                <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+            </div>
+            <pre><code>local function getEnabledPlayers(messageName)
+    local enabledPlayers = {}
+    
+    for _, player in ipairs(game.Players:GetPlayers()) do
+        if TagAPI:IsSystemMessageEnabled(player, messageName) then
+            table.insert(enabledPlayers, player)
+        end
+    end
+    
+    return enabledPlayers
+end
+
+local tipsEnabledPlayers = getEnabledPlayers("GameTip")
+print(#tipsEnabledPlayers .. " players have tips enabled")</code></pre>
+        </div>
+
+        <h2>Targeted Announcements</h2>
+        <p>Send announcements only to interested players.</p>
+        <div class="code-block-wrapper">
+            <div class="code-block-header">
+                <span>Lua</span>
+                <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+            </div>
+            <pre><code>local function announceEventToInterestedPlayers(eventName)
+    local message = "🎉 " .. eventName .. " starts in 5 minutes!"
+    
+    for _, player in ipairs(game.Players:GetPlayers()) do
+        if TagAPI:IsSystemMessageEnabled(player, "EventStart") then
+            TagAPI:SendSystemMessage(
+                "EventStart_" .. eventName,
+                "Alert",
+                message
+            )
+        else
+            print("Skipped " .. player.Name .. " - event messages disabled")
+        end
+    end
+end
+
+announceEventToInterestedPlayers("Boss Battle")</code></pre>
+        </div>
+
+        <h2>Statistics Tracking</h2>
+        <p>Track how many players have specific messages enabled.</p>
+        <div class="code-block-wrapper">
+            <div class="code-block-header">
+                <span>Lua</span>
+                <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+            </div>
+            <pre><code>local function getMessageStatistics()
+    local messageTypes = {
+        "ServerRestart",
+        "EventStart",
+        "GameTip",
+        "Achievement",
+        "PlayerJoin"
+    }
+    
+    local stats = {}
+    local totalPlayers = #game.Players:GetPlayers()
+    
+    for _, msgType in ipairs(messageTypes) do
+        local enabledCount = 0
+        
+        for _, player in ipairs(game.Players:GetPlayers()) do
+            if TagAPI:IsSystemMessageEnabled(player, msgType) then
+                enabledCount = enabledCount + 1
+            end
+        end
+        
+        stats[msgType] = {
+            Enabled = enabledCount,
+            Disabled = totalPlayers - enabledCount,
+            Percentage = (enabledCount / totalPlayers) * 100
+        }
+    end
+    
+    return stats
+end
+
+local stats = getMessageStatistics()
+for msgType, data in pairs(stats) do
+    print(msgType .. ": " .. data.Percentage .. "% enabled")
+end</code></pre>
+        </div>
+
+        <h2>Smart Notification System</h2>
+        <p>Send notifications with fallback for disabled messages.</p>
+        <div class="code-block-wrapper">
+            <div class="code-block-header">
+                <span>Lua</span>
+                <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+            </div>
+            <pre><code>local function smartNotify(player, messageName, systemTag, content, fallback)
+    if TagAPI:IsSystemMessageEnabled(player, messageName) then
+        TagAPI:SendSystemMessage(messageName, systemTag, content)
+        return true, "Message sent"
+    else
+        -- Use fallback method if provided
+        if fallback then
+            fallback(player)
+        end
+        
+        return false, "Message disabled by player"
+    end
+end
+
+-- Usage with fallback
+smartNotify(
+    player,
+    "EventStart",
+    "Alert",
+    "Event starting!",
+    function(p)
+        -- Fallback: show in GUI instead
+        local gui = p.PlayerGui:FindFirstChild("NotificationGui")
+        if gui then
+            gui.NotificationLabel.Text = "Event starting!"
+        end
+    end
+)</code></pre>
+        </div>
+
+        <h2>Preference Report</h2>
+        <p>Generate a report of player message preferences.</p>
+        <div class="code-block-wrapper">
+            <div class="code-block-header">
+                <span>Lua</span>
+                <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+            </div>
+            <pre><code>local function getPlayerPreferences(player)
+    local messageTypes = {
+        "ServerRestart",
+        "EventStart",
+        "GameTip",
+        "Achievement",
+        "PlayerJoin",
+        "ShopUpdate"
+    }
+    
+    local preferences = {}
+    
+    for _, msgType in ipairs(messageTypes) do
+        preferences[msgType] = TagAPI:IsSystemMessageEnabled(player, msgType)
+    end
+    
+    return preferences
+end
+
+local prefs = getPlayerPreferences(player)
+print("Message preferences for " .. player.Name .. ":")
+for msgType, enabled in pairs(prefs) do
+    local status = enabled and "✓ Enabled" or "✗ Disabled"
+    print("  " .. msgType .. ": " .. status)
+end</code></pre>
+        </div>
+
+        <h2>Admin Override Check</h2>
+        <p>Force send critical messages regardless of preferences.</p>
+        <div class="code-block-wrapper">
+            <div class="code-block-header">
+                <span>Lua</span>
+                <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+            </div>
+            <pre><code>local CRITICAL_MESSAGES = {
+    "ServerRestart",
+    "ServerShutdown",
+    "MaintenanceWarning",
+    "SecurityAlert"
+}
+
+local function sendCriticalOrCheck(player, messageName, systemTag, content)
+    local isCritical = table.find(CRITICAL_MESSAGES, messageName) ~= nil
+    
+    if isCritical then
+        -- Always send critical messages
+        TagAPI:SendSystemMessage(messageName, systemTag, content)
+        return true, "Critical message sent (forced)"
+    else
+        -- Check preference for non-critical messages
+        if TagAPI:IsSystemMessageEnabled(player, messageName) then
+            TagAPI:SendSystemMessage(messageName, systemTag, content)
+            return true, "Message sent"
+        else
+            return false, "Message disabled by player"
+        end
+    end
+end
+
+sendCriticalOrCheck(player, "ServerRestart", "Alert", "Server restarting in 5 minutes!")</code></pre>
+        </div>
+
+        <h2>UI Indicator</h2>
+        <p>Show current message status in player UI.</p>
+        <div class="code-block-wrapper">
+            <div class="code-block-header">
+                <span>Lua</span>
+                <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+            </div>
+            <pre><code>-- LocalScript
+local player = game.Players.LocalPlayer
+local TagAPI = require(game.ReplicatedStorage.CustomChatTagsClientAPI)
+
+local settingsFrame = script.Parent.SettingsFrame
+
+local function updateIndicators()
+    local messageTypes = {
+        "ServerRestart",
+        "EventStart",
+        "GameTip",
+        "Achievement"
+    }
+    
+    for _, msgType in ipairs(messageTypes) do
+        local indicator = settingsFrame:FindFirstChild(msgType .. "Indicator")
+        
+        if indicator then
+            local isEnabled = TagAPI:IsSystemMessageEnabled(msgType)
+            
+            if isEnabled then
+                indicator.BackgroundColor3 = Color3.fromRGB(0, 200, 0)
+                indicator.Text = "ON"
+            else
+                indicator.BackgroundColor3 = Color3.fromRGB(200, 0, 0)
+                indicator.Text = "OFF"
+            end
+        end
+    end
+end
+
+-- Update every 5 seconds
+while true do
+    updateIndicators()
+    task.wait(5)
+end</code></pre>
+        </div>
+
+        <h2>Batch Check</h2>
+        <p>Check multiple message types at once.</p>
+        <div class="code-block-wrapper">
+            <div class="code-block-header">
+                <span>Lua</span>
+                <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+            </div>
+            <pre><code>local function checkMultipleMessages(player, messageNames)
+    local results = {}
+    
+    for _, msgName in ipairs(messageNames) do
+        results[msgName] = TagAPI:IsSystemMessageEnabled(player, msgName)
+    end
+    
+    return results
+end
+
+local toCheck = {"GameTip", "EventStart", "Achievement"}
+local results = checkMultipleMessages(player, toCheck)
+
+for msgName, enabled in pairs(results) do
+    print(msgName .. ": " .. tostring(enabled))
+end</code></pre>
+        </div>
+
+        <h2>Count Enabled Messages</h2>
+        <p>Count how many message types a player has enabled.</p>
+        <div class="code-block-wrapper">
+            <div class="code-block-header">
+                <span>Lua</span>
+                <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+            </div>
+            <pre><code>local function countEnabledMessages(player)
+    local messageTypes = {
+        "ServerRestart",
+        "EventStart",
+        "GameTip",
+        "Achievement",
+        "PlayerJoin",
+        "ShopUpdate"
+    }
+    
+    local enabledCount = 0
+    local totalCount = #messageTypes
+    
+    for _, msgType in ipairs(messageTypes) do
+        if TagAPI:IsSystemMessageEnabled(player, msgType) then
+            enabledCount = enabledCount + 1
+        end
+    end
+    
+    return enabledCount, totalCount
+end
+
+local enabled, total = countEnabledMessages(player)
+print(player.Name .. " has " .. enabled .. "/" .. total .. " message types enabled")</code></pre>
+        </div>
+
+        <h2>Notification Opt-In Check</h2>
+        <p>Check if player has opted into any notifications.</p>
+        <div class="code-block-wrapper">
+            <div class="code-block-header">
+                <span>Lua</span>
+                <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+            </div>
+            <pre><code>local function hasAnyMessagesEnabled(player)
+    local messageTypes = {
+        "ServerRestart",
+        "EventStart",
+        "GameTip",
+        "Achievement",
+        "PlayerJoin"
+    }
+    
+    for _, msgType in ipairs(messageTypes) do
+        if TagAPI:IsSystemMessageEnabled(player, msgType) then
+            return true
+        end
+    end
+    
+    return false
+end
+
+if not hasAnyMessagesEnabled(player) then
+    print(player.Name .. " has disabled all notifications")
+end</code></pre>
+        </div>
+
+        <h2>Admin Command</h2>
+        <p>Admin command to check player's message preferences.</p>
+        <div class="code-block-wrapper">
+            <div class="code-block-header">
+                <span>Lua</span>
+                <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+            </div>
+            <pre><code>local function checkMessagesCommand(admin, args)
+    local targetName = args[1]
+    if not targetName then
+        return false, "Usage: !checkmsg [player]"
+    end
+    
+    local targetPlayer = game.Players:FindFirstChild(targetName)
+    if not targetPlayer then
+        return false, "Player not found"
+    end
+    
+    local messageTypes = {
+        "ServerRestart",
+        "EventStart",
+        "GameTip",
+        "Achievement"
+    }
+    
+    local message = targetPlayer.Name .. "'s message preferences:\n"
+    
+    for _, msgType in ipairs(messageTypes) do
+        local enabled = TagAPI:IsSystemMessageEnabled(targetPlayer, msgType)
+        local status = enabled and "✓ Enabled" or "✗ Disabled"
+        message = message .. "• " .. msgType .. ": " .. status .. "\n"
+    end
+    
+    return true, message
+end
+
+adminCommands["checkmsg"] = checkMessagesCommand</code></pre>
+        </div>
+
+        <h2>Default Preference Logic</h2>
+        <p>Handle default enabled state for new message types.</p>
+        <div class="code-block-wrapper">
+            <div class="code-block-header">
+                <span>Lua</span>
+                <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+            </div>
+            <pre><code>local DEFAULT_ENABLED_MESSAGES = {
+    "ServerRestart",
+    "MaintenanceWarning",
+    "SecurityAlert"
+}
+
+local function isEnabledOrDefault(player, messageName)
+    local isEnabled = TagAPI:IsSystemMessageEnabled(player, messageName)
+    
+    -- If explicitly set, use that value
+    if isEnabled ~= nil then
+        return isEnabled
+    end
+    
+    -- Otherwise check if it's in default enabled list
+    return table.find(DEFAULT_ENABLED_MESSAGES, messageName) ~= nil
+end
+
+local shouldSend = isEnabledOrDefault(player, "ServerRestart")
+print("Should send: " .. tostring(shouldSend))</code></pre>
+        </div>
+
+        <h2>Preference Export</h2>
+        <p>Export player preferences for backup.</p>
+        <div class="code-block-wrapper">
+            <div class="code-block-header">
+                <span>Lua</span>
+                <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+            </div>
+            <pre><code>local HttpService = game:GetService("HttpService")
+
+local function exportPlayerMessagePreferences(player)
+    local messageTypes = {
+        "ServerRestart",
+        "EventStart",
+        "GameTip",
+        "Achievement",
+        "PlayerJoin",
+        "ShopUpdate"
+    }
+    
+    local preferences = {
+        UserId = player.UserId,
+        Username = player.Name,
+        Timestamp = os.time(),
+        Messages = {}
+    }
+    
+    for _, msgType in ipairs(messageTypes) do
+        preferences.Messages[msgType] = TagAPI:IsSystemMessageEnabled(player, msgType)
+    end
+    
+    local json = HttpService:JSONEncode(preferences)
+    return json
+end
+
+local prefsJSON = exportPlayerMessagePreferences(player)
+print(prefsJSON)</code></pre>
+        </div>
+
+        <h2>Migration Helper</h2>
+        <p>Migrate players from old to new message system.</p>
+        <div class="code-block-wrapper">
+            <div class="code-block-header">
+                <span>Lua</span>
+                <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+            </div>
+            <pre><code>local OLD_TO_NEW_MESSAGE_MAP = {
+    ["tips"] = "GameTip",
+    ["events"] = "EventStart",
+    ["announcements"] = "ServerRestart"
+}
+
+local function migrateOldPreferences(player, oldPrefs)
+    local newPrefs = {}
+    
+    for oldName, newName in pairs(OLD_TO_NEW_MESSAGE_MAP) do
+        if oldPrefs[oldName] ~= nil then
+            newPrefs[newName] = oldPrefs[oldName]
+        end
+    end
+    
+    if next(newPrefs) then
+        TagAPI:UpdateClientSettings(player, newPrefs)
+        print("Migrated preferences for " .. player.Name)
+    end
+end
+
+-- Usage
+local oldPreferences = {tips = false, events = true}
+migrateOldPreferences(player, oldPreferences)</code></pre>
+        </div>
+
+        <h2>Notification Summary</h2>
+        <p>Show player a summary of their notification settings.</p>
+        <div class="code-block-wrapper">
+            <div class="code-block-header">
+                <span>Lua</span>
+                <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+            </div>
+            <pre><code>local function showNotificationSummary(player)
+    local messageTypes = {
+        {name = "ServerRestart", label = "Server Restart Warnings"},
+        {name = "EventStart", label = "Event Notifications"},
+        {name = "GameTip", label = "Gameplay Tips"},
+        {name = "Achievement", label = "Achievement Broadcasts"}
+    }
+    
+    local summary = "Your Notification Settings:\n\n"
+    
+    for _, msgInfo in ipairs(messageTypes) do
+        local enabled = TagAPI:IsSystemMessageEnabled(player, msgInfo.name)
+        local icon = enabled and "🔔" or "🔕"
+        local status = enabled and "On" or "Off"
+        
+        summary = summary .. icon .. " " .. msgInfo.label .. ": " .. status .. "\n"
+    end
+    
+    local notifyRemote = ReplicatedStorage.NotifyPlayer
+    notifyRemote:FireClient(player, summary)
+end
+
+showNotificationSummary(player)</code></pre>
+        </div>
+    </div>
+</main>
+
+</div>
+
+<script>
+    if (window.hljs) hljs.highlightAll();
+
+    // Sidebar toggles
+    document.querySelectorAll('.nav-parent-row').forEach(row => {
+        const id = row.getAttribute('data-toggle');
+        const target = id ? document.getElementById(id) : null;
+        const chevron = row.querySelector('.nav-chevron');
+
+        row.addEventListener('click', (e) => {
+            if (e.target.tagName.toLowerCase() === 'a') return;
+            if (!target) return;
+
+            const hidden = target.classList.contains('hidden');
+            target.classList.toggle('hidden', !hidden);
+            if (chevron) chevron.classList.toggle('open', hidden);
+        });
+    });
+</script>
+</body>
+</html>
+
+
+
+
+
+
+

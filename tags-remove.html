@@ -194,76 +194,469 @@
     </aside>
     
     <!-- Main content -->
-    <main class="content-wrapper">
-        <div class="content-inner">
-            <header>
-                <h1>TagAPI:Give</h1>
-                <p>
-                    <code>TagAPI:Give</code> grants a tag to a player. If the player already owns the tag,
-                    the call is ignored and no duplicate is created.
-                </p>
-            </header>
+<main class="content-wrapper">
+  <div class="content-inner">
+    <h1>TagAPI:Remove</h1>
+    <p>
+      The <code>TagAPI:Remove</code> method removes a tag from a player. This method is server-side only and requires the CCTFF framework to be properly initialized. Use this to revoke permissions, update player status, or remove expired tags.
+    </p>
 
-            <section>
-                <h2>Syntax</h2>
-                <pre><code class="language-lua">
-TagAPI:Give(player: Player, tagId: string)
-                </code></pre>
-            </section>
+    <h2>Overview</h2>
+    <p>
+      <strong>Where it fires:</strong> Server-side only (ServerScriptService, ServerStorage scripts)<br>
+      <strong>When to use:</strong> When you need to remove tags from players due to role changes, subscription expiration, punishment, or game state changes<br>
+      <strong>Returns:</strong> void (no return value)<br>
+      <strong>Side effects:</strong> Fires replication to client, updates player's tag collection, triggers any tag-related UI updates
+    </p>
 
-            <section>
-                <h2>Parameters</h2>
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Parameter</th>
-                            <th>Type</th>
-                            <th>Description</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td><code>player</code></td>
-                            <td><code>Player</code></td>
-                            <td>The player who should receive the tag.</td>
-                        </tr>
-                        <tr>
-                            <td><code>tagId</code></td>
-                            <td><code>string</code></td>
-                            <td>The tag identifier defined in your CCTFF config.</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </section>
+    <h2>Syntax</h2>
+    <div class="code-block-wrapper">
+      <div class="code-block-header">
+        <span>lua</span>
+        <button class="copy-btn">Copy</button>
+      </div>
+      <pre><code>TagAPI:Remove(player: Player, tagId: string)</code></pre>
+    </div>
 
-            <section>
-                <h2>Basic example</h2>
-                <pre><code class="language-lua">
-local ReplicatedStorage = game:GetService("ReplicatedStorage")
+    <h2>Parameters</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Parameter</th>
+          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><code>player</code></td>
+          <td><code>Player</code></td>
+          <td>The player instance who should lose the tag</td>
+        </tr>
+        <tr>
+          <td><code>tagId</code></td>
+          <td><code>string</code></td>
+          <td>The tag identifier to remove</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h2>Basic Usage</h2>
+    <p>Remove a single tag from a player.</p>
+    <div class="code-block-wrapper">
+      <div class="code-block-header">
+        <span>lua</span>
+        <button class="copy-btn">Copy</button>
+      </div>
+      <pre><code>local ReplicatedStorage = game:GetService("ReplicatedStorage")
 local CCTFF = require(ReplicatedStorage:WaitForChild("CCTFF"))
-
 local TagAPI = CCTFF.TagAPI
 
-game.Players.PlayerAdded:Connect(function(player)
-    TagAPI:Give(player, "Dev")
-end)
-                </code></pre>
-            </section>
+-- Remove a tag from a player
+TagAPI:Remove(player, "Newcomer")</code></pre>
+    </div>
 
-            <section>
-                <h2>Giving multiple tags</h2>
-                <pre><code class="language-lua">
-local tagsToGive = { "Dev", "Tester", "VIP" }
+    <h2>Remove Multiple Tags</h2>
+    <p>Remove several tags at once using a loop.</p>
+    <div class="code-block-wrapper">
+      <div class="code-block-header">
+        <span>lua</span>
+        <button class="copy-btn">Copy</button>
+      </div>
+      <pre><code>local tagsToRemove = {"VIP", "Premium", "EventTag"}
 
-game.Players.PlayerAdded:Connect(function(player)
-    for _, tagId in ipairs(tagsToGive) do
-        TagAPI:Give(player, tagId)
+for _, tagId in ipairs(tagsToRemove) do
+    TagAPI:Remove(player, tagId)
+end</code></pre>
+    </div>
+
+    <h2>Subscription Expiration</h2>
+    <p>Remove VIP tags when a subscription expires.</p>
+    <div class="code-block-wrapper">
+      <div class="code-block-header">
+        <span>lua</span>
+        <button class="copy-btn">Copy</button>
+      </div>
+      <pre><code>local function checkSubscriptionStatus(player)
+    local subscriptionData = getPlayerSubscription(player)
+    
+    if subscriptionData and os.time() > subscriptionData.expiryTime then
+        TagAPI:Remove(player, "VIP")
+        TagAPI:Remove(player, "PremiumMember")
     end
-end)
-                </code></pre>
-            </section>
-        </div>
-    </main>
+end
+
+game.Players.PlayerAdded:Connect(function(player)
+    checkSubscriptionStatus(player)
+end)</code></pre>
+    </div>
+
+    <h2>Demotion System</h2>
+    <p>Remove admin or moderator tags when demoting a player.</p>
+    <div class="code-block-wrapper">
+      <div class="code-block-header">
+        <span>lua</span>
+        <button class="copy-btn">Copy</button>
+      </div>
+      <pre><code>local function demotePlayer(player, fromRole)
+    if fromRole == "Admin" then
+        TagAPI:Remove(player, "Admin")
+        TagAPI:Give(player, "Moderator") -- Optionally give lower role
+    elseif fromRole == "Moderator" then
+        TagAPI:Remove(player, "Moderator")
+    end
+end
+
+-- Usage
+demotePlayer(player, "Admin")</code></pre>
+    </div>
+
+    <h2>Group Rank Update</h2>
+    <p>Remove old rank tags when player's group rank changes.</p>
+    <div class="code-block-wrapper">
+      <div class="code-block-header">
+        <span>lua</span>
+        <button class="copy-btn">Copy</button>
+      </div>
+      <pre><code>local GROUP_ID = 123456
+local rankTags = {"Owner", "Admin", "Moderator", "Member"}
+
+game.Players.PlayerAdded:Connect(function(player)
+    -- Remove all rank tags first
+    for _, tagId in ipairs(rankTags) do
+        TagAPI:Remove(player, tagId)
+    end
+    
+    -- Then assign the correct one
+    local rank = player:GetRankInGroup(GROUP_ID)
+    if rank >= 250 then
+        TagAPI:Give(player, "Owner")
+    elseif rank >= 200 then
+        TagAPI:Give(player, "Admin")
+    end
+end)</code></pre>
+    </div>
+
+    <h2>Event End Cleanup</h2>
+    <p>Remove event-specific tags when an event ends.</p>
+    <div class="code-block-wrapper">
+      <div class="code-block-header">
+        <span>lua</span>
+        <button class="copy-btn">Copy</button>
+      </div>
+      <pre><code>local function endHolidayEvent()
+    for _, player in ipairs(game.Players:GetPlayers()) do
+        TagAPI:Remove(player, "HolidayParticipant")
+        TagAPI:Remove(player, "EventWinner")
+    end
+end
+
+-- Call when event ends
+EventSystem.EventEnded:Connect(endHolidayEvent)</code></pre>
+    </div>
+
+    <h2>Punishment System</h2>
+    <p>Remove privileges tags when punishing a player.</p>
+    <div class="code-block-wrapper">
+      <div class="code-block-header">
+        <span>lua</span>
+        <button class="copy-btn">Copy</button>
+      </div>
+      <pre><code>local function punishPlayer(player, severity)
+    if severity == "severe" then
+        TagAPI:Remove(player, "VIP")
+        TagAPI:Remove(player, "Trusted")
+        TagAPI:Remove(player, "Moderator")
+    elseif severity == "moderate" then
+        TagAPI:Remove(player, "Trusted")
+    end
+    
+    TagAPI:Give(player, "Restricted")
+end
+
+-- Usage
+punishPlayer(player, "severe")</code></pre>
+    </div>
+
+    <h2>Command System Integration</h2>
+    <p>Allow administrators to remove tags via commands.</p>
+    <div class="code-block-wrapper">
+      <div class="code-block-header">
+        <span>lua</span>
+        <button class="copy-btn">Copy</button>
+      </div>
+      <pre><code>local function removeTagCommand(admin, targetPlayerName, tagId)
+    local targetPlayer = game.Players:FindFirstChild(targetPlayerName)
+    
+    if targetPlayer then
+        TagAPI:Remove(targetPlayer, tagId)
+        return true, "Tag removed successfully!"
+    else
+        return false, "Player not found"
+    end
+end
+
+-- Example command handler
+adminCommands["removetag"] = removeTagCommand</code></pre>
+    </div>
+
+    <h2>Team Change Cleanup</h2>
+    <p>Remove team-specific tags when players switch teams.</p>
+    <div class="code-block-wrapper">
+      <div class="code-block-header">
+        <span>lua</span>
+        <button class="copy-btn">Copy</button>
+      </div>
+      <pre><code>game.Players.PlayerAdded:Connect(function(player)
+    player:GetPropertyChangedSignal("Team"):Connect(function()
+        -- Remove all team tags
+        TagAPI:Remove(player, "RedTeamMember")
+        TagAPI:Remove(player, "BlueTeamMember")
+        TagAPI:Remove(player, "GreenTeamMember")
+        
+        -- Add new team tag
+        local team = player.Team
+        if team then
+            TagAPI:Give(player, team.Name .. "TeamMember")
+        end
+    end)
+end)</code></pre>
+    </div>
+
+    <h2>Leaderboard Position Loss</h2>
+    <p>Remove ranking tags when players drop in leaderboard position.</p>
+    <div class="code-block-wrapper">
+      <div class="code-block-header">
+        <span>lua</span>
+        <button class="copy-btn">Copy</button>
+      </div>
+      <pre><code>local function updateLeaderboardTags()
+    -- Remove all ranking tags from everyone
+    for _, player in ipairs(game.Players:GetPlayers()) do
+        TagAPI:Remove(player, "Champion")
+        TagAPI:Remove(player, "RunnerUp")
+        TagAPI:Remove(player, "ThirdPlace")
+    end
+    
+    -- Sort and assign to top 3
+    local players = game.Players:GetPlayers()
+    table.sort(players, function(a, b)
+        return a.leaderstats.Points.Value > b.leaderstats.Points.Value
+    end)
+    
+    if players[1] then TagAPI:Give(players[1], "Champion") end
+    if players[2] then TagAPI:Give(players[2], "RunnerUp") end
+    if players[3] then TagAPI:Give(players[3], "ThirdPlace") end
+end</code></pre>
+    </div>
+
+    <h2>Premium Cancellation</h2>
+    <p>Remove Premium tags when subscription is cancelled.</p>
+    <div class="code-block-wrapper">
+      <div class="code-block-header">
+        <span>lua</span>
+        <button class="copy-btn">Copy</button>
+      </div>
+      <pre><code>game.Players.PlayerAdded:Connect(function(player)
+    -- Check periodically
+    while player and player.Parent do
+        if player.MembershipType ~= Enum.MembershipType.Premium then
+            TagAPI:Remove(player, "PremiumMember")
+        end
+        task.wait(300) -- Check every 5 minutes
+    end
+end)</code></pre>
+    </div>
+
+    <h2>Session-Based Tags</h2>
+    <p>Remove temporary tags when players leave the game.</p>
+    <div class="code-block-wrapper">
+      <div class="code-block-header">
+        <span>lua</span>
+        <button class="copy-btn">Copy</button>
+      </div>
+      <pre><code>game.Players.PlayerRemoving:Connect(function(player)
+    -- Remove all temporary tags
+    TagAPI:Remove(player, "InGame")
+    TagAPI:Remove(player, "ActivePlayer")
+    TagAPI:Remove(player, "CurrentlyPlaying")
+end)</code></pre>
+    </div>
+
+    <h2>Achievement Revocation</h2>
+    <p>Remove achievement tags if progress is lost or reset.</p>
+    <div class="code-block-wrapper">
+      <div class="code-block-header">
+        <span>lua</span>
+        <button class="copy-btn">Copy</button>
+      </div>
+      <pre><code>local function resetPlayerProgress(player)
+    -- Remove all achievement tags
+    local achievementTags = {
+        "Centurion", "Veteran", "Explorer",
+        "Millionaire", "Wealthy", "Prosperous"
+    }
+    
+    for _, tagId in ipairs(achievementTags) do
+        TagAPI:Remove(player, tagId)
+    end
+    
+    -- Reset stats
+    player.leaderstats.Level.Value = 1
+    player.leaderstats.Coins.Value = 0
+end</code></pre>
+    </div>
+
+    <h2>Time-Limited Tags</h2>
+    <p>Remove tags after a specific duration.</p>
+    <div class="code-block-wrapper">
+      <div class="code-block-header">
+        <span>lua</span>
+        <button class="copy-btn">Copy</button>
+      </div>
+      <pre><code>local function giveTemporaryTag(player, tagId, duration)
+    TagAPI:Give(player, tagId)
+    
+    task.wait(duration)
+    
+    if player and player.Parent then
+        TagAPI:Remove(player, tagId)
+    end
+end
+
+-- Give a 1-hour boost tag
+giveTemporaryTag(player, "DoubleXP", 3600)</code></pre>
+    </div>
+
+    <h2>Conditional Tag Removal</h2>
+    <p>Remove tags based on player behavior or stats dropping below thresholds.</p>
+    <div class="code-block-wrapper">
+      <div class="code-block-header">
+        <span>lua</span>
+        <button class="copy-btn">Copy</button>
+      </div>
+      <pre><code>local function checkStatRequirements(player)
+    local coins = player.leaderstats.Coins.Value
+    
+    if coins < 1000000 then
+        TagAPI:Remove(player, "Millionaire")
+    end
+    if coins < 100000 then
+        TagAPI:Remove(player, "Wealthy")
+    end
+    if coins < 10000 then
+        TagAPI:Remove(player, "Prosperous")
+    end
+end
+
+game.Players.PlayerAdded:Connect(function(player)
+    player.leaderstats.Coins.Changed:Connect(function()
+        checkStatRequirements(player)
+    end)
+end)</code></pre>
+    </div>
+
+    <h2>Clear All Tags</h2>
+    <p>Remove all tags from a player (useful for resets or fresh starts).</p>
+    <div class="code-block-wrapper">
+      <div class="code-block-header">
+        <span>lua</span>
+        <button class="copy-btn">Copy</button>
+      </div>
+      <pre><code>local function clearAllTags(player)
+    local allPossibleTags = {
+        "Admin", "Moderator", "VIP", "Premium",
+        "Veteran", "Newcomer", "Champion", "Developer"
+        -- Add all your tag IDs here
+    }
+    
+    for _, tagId in ipairs(allPossibleTags) do
+        TagAPI:Remove(player, tagId)
+    end
+end
+
+-- Usage
+clearAllTags(player)</code></pre>
+    </div>
+
+    <h2>Role Transition</h2>
+    <p>Remove old role tags before assigning new ones.</p>
+    <div class="code-block-wrapper">
+      <div class="code-block-header">
+        <span>lua</span>
+        <button class="copy-btn">Copy</button>
+      </div>
+      <pre><code>local function setPlayerRole(player, newRole)
+    -- Remove all role tags
+    local allRoles = {"Owner", "Admin", "Moderator", "Helper", "Member"}
+    for _, role in ipairs(allRoles) do
+        TagAPI:Remove(player, role)
+    end
+    
+    -- Add new role
+    TagAPI:Give(player, newRole)
+end
+
+-- Usage
+setPlayerRole(player, "Moderator")</code></pre>
+    </div>
+
+    <h2>Badge Loss Handling</h2>
+    <p>Remove tags if badge verification fails (edge case handling).</p>
+    <div class="code-block-wrapper">
+      <div class="code-block-header">
+        <span>lua</span>
+        <button class="copy-btn">Copy</button>
+      </div>
+      <pre><code>local BadgeService = game:GetService("BadgeService")
+local BADGE_ID = 123456789
+
+local function verifyBadgeTags(player)
+    local success, hasBadge = pcall(function()
+        return BadgeService:UserHasBadgeAsync(player.UserId, BADGE_ID)
+    end)
+    
+    if success and not hasBadge then
+        TagAPI:Remove(player, "BadgeCollector")
+    end
+end
+
+-- Verify periodically
+game.Players.PlayerAdded:Connect(function(player)
+    while player and player.Parent do
+        verifyBadgeTags(player)
+        task.wait(600) -- Check every 10 minutes
+    end
+end)</code></pre>
+    </div>
+
+    <h2>Cooldown System</h2>
+    <p>Remove and re-add tags to implement cooldowns.</p>
+    <div class="code-block-wrapper">
+      <div class="code-block-header">
+        <span>lua</span>
+        <button class="copy-btn">Copy</button>
+      </div>
+      <pre><code>local function usePowerUp(player)
+    -- Check if player has the tag
+    if hasTag(player, "PowerUpReady") then
+        TagAPI:Remove(player, "PowerUpReady")
+        
+        -- Grant power up effect
+        applyPowerUp(player)
+        
+        -- Cooldown period
+        task.wait(60)
+        
+        if player and player.Parent then
+            TagAPI:Give(player, "PowerUpReady")
+        end
+    end
+end</code></pre>
+    </div>
+
+  </div>
+</main>
 </div>
 
 <script>

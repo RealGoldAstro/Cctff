@@ -55,6 +55,41 @@
     animation: pulse 2s infinite;
 }
 
+/* Fix: Remove underline from links */
+a {
+    color: var(--text-link);
+    text-decoration: none;
+}
+a:hover {
+    text-decoration: none; /* Changed from underline to none */
+}
+
+/* Fix: Ensure framework card links don't underline */
+.framework-card {
+    text-decoration: none;
+}
+
+.framework-card:hover {
+    text-decoration: none;
+}
+
+/* Fix: Community links hover without underline */
+.community-link:hover {
+    background: rgba(15, 23, 42, 1);
+    border-color: var(--accent);
+    color: var(--accent);
+    text-decoration: none;
+}
+
+/* Fix: All feature badges, buttons stay clean */
+.feature-badge:hover,
+.btn-primary:hover,
+.btn-secondary:hover,
+.card-link:hover {
+    text-decoration: none;
+}
+
+
 @keyframes pulse {
     0%, 100% { opacity: 1; }
     50% { opacity: 0.5; }
@@ -925,6 +960,7 @@ code {
         padding: 1.8rem 1.4rem 2.5rem;
     }
 }
+
 
 
 

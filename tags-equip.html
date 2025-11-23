@@ -1,0 +1,804 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CCTFF · Equip</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+    <!-- Add favicon here -->
+    <link rel="icon" type="image/png" href="Assets/Logo.png">
+    
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+    <!-- Highlight.js (optional) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/styles/atom-one-dark.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/highlight.min.js"></script>
+
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="main-wrapper">
+    <!-- Sidebar -->
+ <aside class="sidebar no-scrollbar">
+        <div class="sidebar-inner">
+
+            <!-- Logo / title -->
+            <div class="sidebar-logo">
+                <div class="sidebar-logo-icon">
+                    <img src="Assets/Logo.png" alt="Logo">
+                </div>
+                <div class="sidebar-logo-text">
+                    <div class="sidebar-logo-title">Vault Docs</div>
+                    <div class="sidebar-logo-subtitle">Versatile Asset Utility Library Tools</div>
+                </div>
+            </div>
+
+            <!-- Nav -->
+            <div class="sidebar-nav-section" style="margin-top:0.9rem;">
+                <!-- Overview -->
+                <div class="nav-parent-row">
+                    <a href="index.html" class="nav-link-parent">Overview</a>
+                </div>
+
+                <!-- CCTFF group -->
+                <div class="nav-parent-row" data-toggle="cctff-main">
+                    <a href="cctff.html" class="nav-link-parent">CCTFF</a>
+                    <i class="fas fa-chevron-right nav-chevron open"></i>
+                </div>
+                <ul id="cctff-main" class="nav-list nav-children">
+                    <li class="nav-item">
+                        <a href="cctff.html" class="nav-child-link">Overview</a>
+                    </li>
+
+                    <!-- Tags group (this page) -->
+                    <li class="nav-item">
+                        <div class="nav-parent-row" data-toggle="tags-sub">
+                            <a href="tags.html" class="nav-link-parent active">Tags</a>
+                            <i class="fas fa-chevron-right nav-chevron open"></i>
+                        </div>
+                        <ul id="tags-sub" class="nav-children">
+
+                            <!-- Api Index -->
+                            <li class="nav-item">
+                                <a href="tags.html" class="nav-child-link">API index</a>
+                            </li>
+
+                            <!-- Give -->
+                            <li class="nav-item">
+                                <a href="tags-give.html" class="nav-child-link">TagAPI:Give</a>
+                            </li>
+
+                            <!-- Remove -->
+                            <li class="nav-item">
+                                <a href="tags-remove.html" class="nav-child-link">TagAPI:Remove</a>
+                            </li>
+
+                            <!-- Equip -->
+                            <li class="nav-item">
+                                <a href="tags-equip.html" class="nav-child-link active">TagApi:Epuip</a>
+                            </li>
+                            
+                            <!-- Unequip -->
+                            <li class="nav-item">
+                                <a href="tags-unequip.html" class="nav-child-link">TagAPI:Unequip</a>
+                            </li>
+
+                            <!-- Get Owned -->
+                            <li class="nav-item">
+                                <a href="tags-getowned.html" class="nav-child-link">TagAPI:GetOwned</a>
+                            </li>
+
+                            <!-- Get Equipped -->
+                            <li class="nav-item">
+                                <a href="tags-equipped.html" class="nav-child-link">TagAPI:GetEquipped</a>
+                            </li>
+
+                            <!-- Has Tag -->
+                            <li class="nav-item">
+                                <a href="tags-hastag.html" class="nav-child-link">TagAPI:HasTag</a>
+                            </li>
+
+                            <!-- Is Equipped -->
+                            <li class="nav-item">
+                                <a href="tags-isequipped.html" class="nav-child-link">TagAPI:IsEquipped</a>
+                            </li>
+
+                            <!-- Clear All -->
+                            <li class="nav-item">
+                                <a href="tags-clearall.html" class="nav-child-link">TagAPI:ClearAll</a>
+                            </li>
+                            
+                            <!-- Unequip All -->
+                            <li class="nav-item">
+                                <a href="tags-unequipall.html" class="nav-child-link">TagAPI:UnequipAll</a>
+                            </li>
+
+                            <!-- Get Max Slots -->
+                            <li class="nav-item">
+                                <a href="tags-getmaxslots.html" class="nav-child-link">TagAPI:GetMaxSlots</a>
+                            </li>
+
+                            <!-- Get Available Slots -->
+                            <li class="nav-item">
+                                <a href="tags-getavailableslots.html" class="nav-child-link">TagAPI:GetAvailableSlots</a>
+                            </li>
+
+                        </ul>
+                    </li>
+
+                    <!-- Leaderboard Tags -->
+                    <li class="nav-item">
+                        <div class="nav-parent-row" data-toggle="leaderboard-sub">
+                            <a href="leaderboard.html" class="nav-link-parent">Leaderboard Tags</a>
+                            <i class="fas fa-chevron-right nav-chevron"></i>
+                        </div>
+                        <ul id="leaderboard-sub" class="nav-children hidden">
+                            
+                            <!-- Api Index -->
+                            <li class="nav-item">
+                                <a href="leaderboard.html" class="nav-child-link">API index</a>
+                            </li>
+
+                            <!-- Give Leaderboard Tag -->
+                            <li class="nav-item">
+                                <a href="leaderboard-givetag.html" class="nav-child-link">TagAPI:GiveLeaderboardTag</a>
+                            </li>
+
+                            <!-- Update Leaderboard Tag -->
+                            <li class="nav-item">
+                                <a href="leaderboard-updatetag.html" class="nav-child-link">TagAPI:UpdateLeaderboardTag</a>
+                            </li>
+
+                            <!-- Remove Leaderboard Tag -->
+                            <li class="nav-item">
+                                <a href="leaderboard-removetag.html" class="nav-child-link">TagAPI:RemoveLeaderboardTag</a>
+                            </li>
+
+                            <!-- Get Leaderbaord Tag -->
+                            <li class="nav-item">
+                                <a href="leaderboard-gettag.html" class="nav-child-link">TagAPI:GetLeaderboardTagText</a>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <!-- System Messages -->
+                    <li class="nav-item">
+                        <div class="nav-parent-row" data-toggle="system-sub">
+                            <a href="system.html" class="nav-link-parent">System Messages</a>
+                            <i class="fas fa-chevron-right nav-chevron"></i>
+                        </div>
+                        <ul id="system-sub" class="nav-children hidden">
+
+                            <!-- Api Index -->
+                            <li class="nav-item">
+                                <a href="system.html" class="nav-child-link">API index</a>
+                            </li>
+
+                            <!-- Send System Message -->
+                            <li class="nav-item">
+                                <a href="system-sendmessage.html" class="nav-child-link">TagAPI:SendSystemMessage</a>
+                            </li>
+
+                            <!-- Update Client Settings -->
+                            <li class="nav-item">
+                                <a href="system-updatesettings.html" class="nav-child-link">TagAPI:UpdateClientSettings</a>
+                            </li>
+
+                            <!-- Is System Message Enabled -->
+                            <li class="nav-item">
+                                <a href="system-messageenabled.html" class="nav-child-link">TagAPI:IsSystemMessageEnabled</a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </aside>
+
+    <!-- Main content -->
+<main class="content-wrapper">
+  <div class="content-inner">
+    <h1>TagAPI:Equip</h1>
+    <p>
+      The <code>TagAPI:Equip</code> method equips a tag that a player already owns, making it visible in chat. This method is server-side only and requires the CCTFF framework to be properly initialized. Players can only equip tags they own, and the system respects maximum slot limits defined in your configuration.
+    </p>
+
+    <h2>Overview</h2>
+    <p>
+      <strong>Where it fires:</strong> Server-side only (ServerScriptService, ServerStorage scripts)<br>
+      <strong>When to use:</strong> When you need to equip tags for display in chat after a player has received them<br>
+      <strong>Returns:</strong> boolean, string (success status and message)<br>
+      <strong>Side effects:</strong> Updates equipped tags collection, fires replication to client, triggers tag display in chat, fires OnTagEquipped event<br>
+      <strong>Max slots:</strong> Respects <code>Config.MaxEquippedTags</code> limit (default: 3)<br>
+      <strong>Sorting:</strong> Equipped tags are automatically sorted by priority
+    </p>
+
+    <h2>Syntax</h2>
+    <div class="code-block-wrapper">
+      <div class="code-block-header">
+        <span>lua</span>
+        <button class="copy-btn">Copy</button>
+      </div>
+      <pre><code>local success, message = TagAPI:Equip(player: Player, tagId: string)</code></pre>
+    </div>
+
+    <h2>Parameters</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Parameter</th>
+          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><code>player</code></td>
+          <td><code>Player</code></td>
+          <td>The player instance who should equip the tag</td>
+        </tr>
+        <tr>
+          <td><code>tagId</code></td>
+          <td><code>string</code></td>
+          <td>The tag identifier to equip (must be owned by player)</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h2>Return Values</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Return</th>
+          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><code>success</code></td>
+          <td><code>boolean</code></td>
+          <td>True if tag was equipped successfully, false otherwise</td>
+        </tr>
+        <tr>
+          <td><code>message</code></td>
+          <td><code>string</code></td>
+          <td>Descriptive message about the operation result</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h2>Basic Usage</h2>
+    <p>Equip a single tag for a player.</p>
+    <div class="code-block-wrapper">
+      <div class="code-block-header">
+        <span>lua</span>
+        <button class="copy-btn">Copy</button>
+      </div>
+      <pre><code>local ReplicatedStorage = game:GetService("ReplicatedStorage")
+local CCTFF = require(ReplicatedStorage:WaitForChild("CCTFF"))
+local TagAPI = CCTFF.TagAPI
+
+local success, msg = TagAPI:Equip(player, "VIP")
+if success then
+    print("Tag equipped successfully!")
+else
+    warn("Failed to equip tag: " .. msg)
+end</code></pre>
+    </div>
+
+    <h2>Give and Equip Together</h2>
+    <p>Common pattern: Give a tag and immediately equip it.</p>
+    <div class="code-block-wrapper">
+      <div class="code-block-header">
+        <span>lua</span>
+        <button class="copy-btn">Copy</button>
+      </div>
+      <pre><code>game.Players.PlayerAdded:Connect(function(player)
+    -- Give the tag first
+    local giveSuccess = TagAPI:Give(player, "Newcomer")
+    
+    if giveSuccess then
+        -- Then equip it
+        local equipSuccess, msg = TagAPI:Equip(player, "Newcomer")
+        
+        if not equipSuccess then
+            warn("Failed to equip Newcomer tag: " .. msg)
+        end
+    end
+end)</code></pre>
+    </div>
+
+    <h2>Equip Multiple Tags</h2>
+    <p>Equip several tags at once, respecting slot limits.</p>
+    <div class="code-block-wrapper">
+      <div class="code-block-header">
+        <span>lua</span>
+        <button class="copy-btn">Copy</button>
+      </div>
+      <pre><code>local tagsToEquip = {"Developer", "Tester", "VIP"}
+
+for _, tagId in ipairs(tagsToEquip) do
+    local success, msg = TagAPI:Equip(player, tagId)
+    
+    if not success then
+        warn("Could not equip " .. tagId .. ": " .. msg)
+    else
+        print("Equipped: " .. tagId)
+    end
+end</code></pre>
+    </div>
+
+    <h2>Check Before Equipping</h2>
+    <p>Verify player owns tag and has available slots before equipping.</p>
+    <div class="code-block-wrapper">
+      <div class="code-block-header">
+        <span>lua</span>
+        <button class="copy-btn">Copy</button>
+      </div>
+      <pre><code>local function safeEquip(player, tagId)
+    -- Check if player owns the tag
+    if not TagAPI:HasTag(player, tagId) then
+        return false, "Player does not own this tag"
+    end
+    
+    -- Check if already equipped
+    if TagAPI:IsEquipped(player, tagId) then
+        return false, "Tag is already equipped"
+    end
+    
+    -- Check available slots
+    local availableSlots = TagAPI:GetAvailableSlots(player)
+    if availableSlots <= 0 then
+        return false, "No available slots (max: " .. TagAPI:GetMaxSlots() .. ")"
+    end
+    
+    -- Equip the tag
+    return TagAPI:Equip(player, tagId)
+end
+
+local success, msg = safeEquip(player, "Champion")
+print(success, msg)</code></pre>
+    </div>
+
+    <h2>Auto-Equip on Purchase</h2>
+    <p>Automatically equip tags when players purchase game passes.</p>
+    <div class="code-block-wrapper">
+      <div class="code-block-header">
+        <span>lua</span>
+        <button class="copy-btn">Copy</button>
+      </div>
+      <pre><code>local MarketplaceService = game:GetService("MarketplaceService")
+local VIP_PASS_ID = 123456
+
+MarketplaceService.PromptGamePassPurchaseFinished:Connect(function(player, passId, wasPurchased)
+    if wasPurchased and passId == VIP_PASS_ID then
+        -- Give the tag
+        TagAPI:Give(player, "VIP")
+        
+        -- Auto-equip it
+        local success, msg = TagAPI:Equip(player, "VIP")
+        
+        if success then
+            -- Notify player
+            game:GetService("StarterGui"):SetCore("ChatMakeSystemMessage", {
+                Text = "[System] VIP tag equipped!",
+                Color = Color3.fromRGB(0, 255, 0)
+            })
+        end
+    end
+end)</code></pre>
+    </div>
+
+    <h2>Equip with Priority Sorting</h2>
+    <p>Tags are automatically sorted by priority when equipped.</p>
+    <div class="code-block-wrapper">
+      <div class="code-block-header">
+        <span>lua</span>
+        <button class="copy-btn">Copy</button>
+      </div>
+      <pre><code>-- Equip multiple tags with different priorities
+-- Lower priority number = higher priority display
+
+TagAPI:Equip(player, "Owner")      -- Priority 1 (highest)
+TagAPI:Equip(player, "Developer")  -- Priority 2
+TagAPI:Equip(player, "Tester")     -- Priority 3
+
+-- Tags will display in order: Owner, Developer, Tester
+-- Even if equipped in different order</code></pre>
+    </div>
+
+    <h2>Smart Slot Management</h2>
+    <p>Unequip lowest priority tag to make room for higher priority tag.</p>
+    <div class="code-block-wrapper">
+      <div class="code-block-header">
+        <span>lua</span>
+        <button class="copy-btn">Copy</button>
+      </div>
+      <pre><code>local function equipWithPriority(player, tagId)
+    local success, msg = TagAPI:Equip(player, tagId)
+    
+    -- If slots full, try to unequip lowest priority tag
+    if not success and msg:find("Maximum equipped") then
+        local equipped = TagAPI:GetEquipped(player)
+        
+        -- Get the last tag (lowest priority)
+        local lowestPriorityTag = equipped[#equipped]
+        
+        if lowestPriorityTag then
+            TagAPI:Unequip(player, lowestPriorityTag)
+            
+            -- Try equipping again
+            return TagAPI:Equip(player, tagId)
+        end
+    end
+    
+    return success, msg
+end
+
+equipWithPriority(player, "Champion")</code></pre>
+    </div>
+
+    <h2>Achievement-Based Auto-Equip</h2>
+    <p>Equip tags automatically when players reach milestones.</p>
+    <div class="code-block-wrapper">
+      <div class="code-block-header">
+        <span>lua</span>
+        <button class="copy-btn">Copy</button>
+      </div>
+      <pre><code>local function onLevelUp(player, newLevel)
+    local tagToEquip = nil
+    
+    if newLevel >= 100 then
+        tagToEquip = "Legendary"
+    elseif newLevel >= 50 then
+        tagToEquip = "Veteran"
+    elseif newLevel >= 10 then
+        tagToEquip = "Explorer"
+    end
+    
+    if tagToEquip then
+        -- Give and equip
+        TagAPI:Give(player, tagToEquip)
+        
+        local success = TagAPI:Equip(player, tagToEquip)
+        
+        if success then
+            print(player.Name .. " equipped " .. tagToEquip .. " tag!")
+        end
+    end
+end
+
+-- Connect to level system
+player.leaderstats.Level.Changed:Connect(function(newLevel)
+    onLevelUp(player, newLevel)
+end)</code></pre>
+    </div>
+
+    <h2>Load Saved Equipped Tags</h2>
+    <p>Restore equipped tags from DataStore when player joins.</p>
+    <div class="code-block-wrapper">
+      <div class="code-block-header">
+        <span>lua</span>
+        <button class="copy-btn">Copy</button>
+      </div>
+      <pre><code>local DataStoreService = game:GetService("DataStoreService")
+local playerDataStore = DataStoreService:GetDataStore("PlayerTags")
+
+game.Players.PlayerAdded:Connect(function(player)
+    local success, savedData = pcall(function()
+        return playerDataStore:GetAsync(player.UserId)
+    end)
+    
+    if success and savedData and savedData.EquippedTags then
+        -- Equip each saved tag
+        for _, tagId in ipairs(savedData.EquippedTags) do
+            -- Give tag if player owns it
+            if TagAPI:HasTag(player, tagId) then
+                TagAPI:Equip(player, tagId)
+            end
+        end
+    end
+end)</code></pre>
+    </div>
+
+    <h2>Command System Integration</h2>
+    <p>Allow players to equip tags via commands.</p>
+    <div class="code-block-wrapper">
+      <div class="code-block-header">
+        <span>lua</span>
+        <button class="copy-btn">Copy</button>
+      </div>
+      <pre><code>local function equipCommand(player, args)
+    local tagId = args[1]
+    
+    if not tagId then
+        return false, "Usage: !equip [tagId]"
+    end
+    
+    local success, msg = TagAPI:Equip(player, tagId)
+    
+    if success then
+        return true, "Equipped tag: " .. tagId
+    else
+        return false, "Failed: " .. msg
+    end
+end
+
+-- Register command
+commands["equip"] = equipCommand</code></pre>
+    </div>
+
+    <h2>UI Selection System</h2>
+    <p>Equip tags based on player selection from a GUI.</p>
+    <div class="code-block-wrapper">
+      <div class="code-block-header">
+        <span>lua</span>
+        <button class="copy-btn">Copy</button>
+      </div>
+      <pre><code>local equipRemote = ReplicatedStorage:WaitForChild("EquipTagRemote")
+
+equipRemote.OnServerEvent:Connect(function(player, tagId)
+    -- Validate input
+    if type(tagId) ~= "string" then
+        return
+    end
+    
+    -- Check ownership
+    if not TagAPI:HasTag(player, tagId) then
+        return
+    end
+    
+    -- Equip the tag
+    local success, msg = TagAPI:Equip(player, tagId)
+    
+    -- Send feedback to client
+    if success then
+        equipRemote:FireClient(player, "success", "Equipped: " .. tagId)
+    else
+        equipRemote:FireClient(player, "error", msg)
+    end
+end)</code></pre>
+    </div>
+
+    <h2>Group Rank Auto-Equip</h2>
+    <p>Automatically equip appropriate tags based on group rank.</p>
+    <div class="code-block-wrapper">
+      <div class="code-block-header">
+        <span>lua</span>
+        <button class="copy-btn">Copy</button>
+      </div>
+      <pre><code>local GROUP_ID = 123456
+
+game.Players.PlayerAdded:Connect(function(player)
+    local rank = player:GetRankInGroup(GROUP_ID)
+    
+    local tagToEquip = nil
+    
+    if rank >= 250 then
+        tagToEquip = "Owner"
+    elseif rank >= 200 then
+        tagToEquip = "Admin"
+    elseif rank >= 100 then
+        tagToEquip = "Moderator"
+    elseif rank >= 1 then
+        tagToEquip = "Member"
+    end
+    
+    if tagToEquip then
+        TagAPI:Give(player, tagToEquip)
+        TagAPI:Equip(player, tagToEquip)
+    end
+end)</code></pre>
+    </div>
+
+    <h2>Event-Exclusive Tags</h2>
+    <p>Equip special event tags for limited-time events.</p>
+    <div class="code-block-wrapper">
+      <div class="code-block-header">
+        <span>lua</span>
+        <button class="copy-btn">Copy</button>
+      </div>
+      <pre><code>local function startHolidayEvent()
+    for _, player in ipairs(game.Players:GetPlayers()) do
+        -- Give event tag
+        TagAPI:Give(player, "HolidayEvent2025")
+        
+        -- Auto-equip if player has slots
+        local available = TagAPI:GetAvailableSlots(player)
+        
+        if available > 0 then
+            TagAPI:Equip(player, "HolidayEvent2025")
+        end
+    end
+end
+
+-- Start event
+startHolidayEvent()</code></pre>
+    </div>
+
+    <h2>Temporary Tag Auto-Equip</h2>
+    <p>Give and equip temporary tags with duration.</p>
+    <div class="code-block-wrapper">
+      <div class="code-block-header">
+        <span>lua</span>
+        <button class="copy-btn">Copy</button>
+      </div>
+      <pre><code>local function giveTemporaryTag(player, tagId, duration)
+    -- Give temporary tag
+    TagAPI:Give(player, tagId)
+    
+    -- Equip it immediately
+    TagAPI:Equip(player, tagId)
+    
+    -- Tag will auto-remove after duration
+    -- Config must have Duration set for the tag
+end
+
+-- Give 1-hour boost tag
+giveTemporaryTag(player, "2XP", 3600)</code></pre>
+    </div>
+
+    <h2>Badge-Based Equip</h2>
+    <p>Equip exclusive tags when players earn badges.</p>
+    <div class="code-block-wrapper">
+      <div class="code-block-header">
+        <span>lua</span>
+        <button class="copy-btn">Copy</button>
+      </div>
+      <pre><code>local BadgeService = game:GetService("BadgeService")
+local ACHIEVEMENT_BADGE = 123456789
+
+game.Players.PlayerAdded:Connect(function(player)
+    local success, hasBadge = pcall(function()
+        return BadgeService:UserHasBadgeAsync(player.UserId, ACHIEVEMENT_BADGE)
+    end)
+    
+    if success and hasBadge then
+        TagAPI:Give(player, "AchievementMaster")
+        TagAPI:Equip(player, "AchievementMaster")
+    end
+end)</code></pre>
+    </div>
+
+    <h2>Rotation System</h2>
+    <p>Rotate through owned tags automatically.</p>
+    <div class="code-block-wrapper">
+      <div class="code-block-header">
+        <span>lua</span>
+        <button class="copy-btn">Copy</button>
+      </div>
+      <pre><code>local function rotatePlayerTags(player)
+    local owned = TagAPI:GetOwned(player)
+    local equipped = TagAPI:GetEquipped(player)
+    
+    if #owned <= #equipped then
+        return -- Already equipping all owned tags
+    end
+    
+    -- Find first unequipped tag
+    for _, tagId in ipairs(owned) do
+        if not TagAPI:IsEquipped(player, tagId) then
+            -- Unequip first equipped tag
+            if equipped[1] then
+                TagAPI:Unequip(player, equipped[1])
+            end
+            
+            -- Equip new tag
+            TagAPI:Equip(player, tagId)
+            break
+        end
+    end
+end
+
+-- Rotate every 60 seconds
+while true do
+    task.wait(60)
+    
+    for _, player in ipairs(game.Players:GetPlayers()) do
+        rotatePlayerTags(player)
+    end
+end</code></pre>
+    </div>
+
+    <h2>Premium Subscriber Auto-Equip</h2>
+    <p>Give and equip Premium tags to Roblox Premium members.</p>
+    <div class="code-block-wrapper">
+      <div class="code-block-header">
+        <span>lua</span>
+        <button class="copy-btn">Copy</button>
+      </div>
+      <pre><code>game.Players.PlayerAdded:Connect(function(player)
+    if player.MembershipType == Enum.MembershipType.Premium then
+        TagAPI:Give(player, "Premium")
+        
+        local success = TagAPI:Equip(player, "Premium")
+        
+        if success then
+            print(player.Name .. " equipped Premium tag!")
+        end
+    end
+end)</code></pre>
+    </div>
+
+    <h2>Conditional Equip with Feedback</h2>
+    <p>Provide detailed feedback about why equipping failed.</p>
+    <div class="code-block-wrapper">
+      <div class="code-block-header">
+        <span>lua</span>
+        <button class="copy-btn">Copy</button>
+      </div>
+      <pre><code>local function equipWithFeedback(player, tagId)
+    local success, msg = TagAPI:Equip(player, tagId)
+    
+    if not success then
+        if msg:find("does not own") then
+            print("You need to unlock this tag first!")
+        elseif msg:find("already equipped") then
+            print("This tag is already equipped!")
+        elseif msg:find("Maximum equipped") then
+            print("Unequip a tag to make room!")
+        else
+            print("Error: " .. msg)
+        end
+    else
+        print("Successfully equipped: " .. tagId)
+    end
+    
+    return success, msg
+end
+
+equipWithFeedback(player, "Champion")</code></pre>
+    </div>
+
+    <h2>OnTagEquipped Event Handler</h2>
+    <p>Listen for when tags are equipped and perform actions.</p>
+    <div class="code-block-wrapper">
+      <div class="code-block-header">
+        <span>lua</span>
+        <button class="copy-btn">Copy</button>
+      </div>
+      <pre><code>TagAPI.OnTagEquipped:Connect(function(player, tagId)
+    print(player.Name .. " equipped tag: " .. tagId)
+    
+    -- Award bonus for equipping certain tags
+    if tagId == "VIP" then
+        player.leaderstats.Coins.Value += 1000
+    end
+    
+    -- Update UI for all players
+    local TagUpdateEvent = ReplicatedStorage:FindFirstChild("TagUpdateEvent")
+    if TagUpdateEvent then
+        TagUpdateEvent:FireAllClients("playerEquipped", {
+            Player = player,
+            TagId = tagId
+        })
+    end
+end)</code></pre>
+    </div>
+
+  </div>
+</main>
+</div>
+
+<script>
+    if (window.hljs) hljs.highlightAll();
+
+    document.querySelectorAll('.nav-parent-row').forEach(row => {
+        const id = row.getAttribute('data-toggle');
+        const target = id ? document.getElementById(id) : null;
+        const chevron = row.querySelector('.nav-chevron');
+
+        row.addEventListener('click', (e) => {
+            if (e.target.tagName.toLowerCase() === 'a') return;
+            if (!target) return;
+
+            const hidden = target.classList.contains('hidden');
+            target.classList.toggle('hidden', !hidden);
+            if (chevron) chevron.classList.toggle('open', hidden);
+        });
+    });
+</script>
+</body>
+</html>

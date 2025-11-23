@@ -27,7 +27,9 @@
 }
 
 
-/* ===== Overview Info Boxes ===== */
+/* ===== Overview Info Boxes ===== 
+   Used for API documentation overview sections
+   Shows: execution context, script type, returns, and effects */
 .overview-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
@@ -70,6 +72,7 @@
   color: #38bdf8;
   font-size: 0.85em;
 }
+
 
 
 
@@ -478,6 +481,7 @@ code {
         padding: 1.8rem 1.4rem 2.5rem;
     }
 }
+
 
 
 

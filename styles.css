@@ -1,5 +1,21 @@
 /* styles.css – Dark blue Cmdr-style docs */
 
+/* Hero title with logo */
+.hero-title {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.hero-logo {
+    width: 2.1rem;  /* Same as h1 font-size */
+    height: 2.1rem;
+    object-fit: contain;
+}
+
+
 /* ===== Theme ===== */
 :root {
     --bg-body: #020617;          /* dark navy */
@@ -962,13 +978,3 @@ code {
         padding: 1.8rem 1.4rem 2.5rem;
     }
 }
-
-
-
-
-
-
-
-
-
-

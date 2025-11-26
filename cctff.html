@@ -203,217 +203,135 @@
       <p>
         CCTFF is a configuration-driven Roblox chat tags system that centralizes all tag rules, prefix formats, leaderboard positions, system notifications, and color themes into one <strong>CustomChatTagsConfig</strong> table. Update any tag or style once and see changes reflected across all chat channels and bubbles instantly.
       </p>
-      <p>
-        Whether you need role tags, dynamic leaderboard ranks, or server-wide system messages, CCTFF handles everything with persistent DataStore support, automatic syncing, and zero client-side guesswork.
-      </p>
     </header>
 
     <section>
       <h2>Framework Structure</h2>
-      <p>CCTFF is organized into three core script locations in your Roblox game:</p>
       <ul>
-        <li><strong>game.ReplicatedStorage</strong>
-          <ul>
-            <li><code>CustomChatTagsAPI</code> – Server-side tag lifecycle (give/remove/equip/unequip), validation, and events.</li>
-            <li><code>CustomChatTagsClientAPI</code> – Safe client proxy that mirrors server methods via RemoteFunction.</li>
-            <li><code>CustomChatTagsConfig</code> – Central configuration for all tags, leaderboard tags, system tags, styles, and display rules.</li>
-          </ul>
-        </li>
-        <li><strong>game.ServerScriptService</strong>
-          <ul>
-            <li><code>CustomChatTagsDataStore.server</code> – DataStore persistence, caching, auto-save, and retry logic.</li>
-            <li><code>CustomChatTagsServer.server</code> – Network event handlers, tag update broadcasts, and system message delivery.</li>
-          </ul>
-        </li>
-        <li><strong>game.StarterPlayer.StarterPlayerScripts</strong>
-          <ul>
-            <li><code>CustomChatTagsClient.client</code> – Live chat rendering, bubble customization, and RichText formatting for messages.</li>
-          </ul>
-        </li>
+        <li><strong>game.ReplicatedStorage</strong> – <code>CustomChatTagsAPI</code>, <code>CustomChatTagsClientAPI</code>, <code>CustomChatTagsConfig</code></li>
+        <li><strong>game.ServerScriptService</strong> – <code>CustomChatTagsDataStore.server</code>, <code>CustomChatTagsServer.server</code></li>
+        <li><strong>game.StarterPlayer.StarterPlayerScripts</strong> – <code>CustomChatTagsClient.client</code></li>
       </ul>
     </section>
 
     <section>
-      <h2>Three Core Features</h2>
-      <p>CCTFF supports three distinct categories of chat enhancements, each with unique APIs and styling options:</p>
+      <h2>Core Features</h2>
+      <p>CCTFF supports three distinct categories of chat enhancements, each with unique APIs and styling:</p>
     </section>
 
     <!-- Feature 1: Player Tags -->
     <section>
-      <h3>1. Player Tags</h3>
-      <p>
-        Player tags are role-based or achievement-based identifiers displayed before usernames. Tags can be temporary (auto-expire) or permanent, and players can equip up to 3 tags at once (configurable).
+      <h3>Player Tags</h3>
+      <p>Role-based or achievement tags displayed before usernames. Players can equip up to 3 tags at once.</p>
+      
+      <h4>Visual Example</h4>
+      <p style="font-family: monospace; background: #1e1e1e; padding: 10px; border-radius: 6px; color: #ddd;">
+        <span style="color: #64ff64; font-weight: bold;">[DEVELOPER]</span>
+        <span style="color: #fff; font-weight: bold;">PlayerName:</span>
+        <span style="color: #64ff64;">Check out the new update!</span>
       </p>
-      <h4>Example Configuration</h4>
+
+      <h4>Config Example</h4>
       <pre><code class="language-lua">
 CustomChatTagsConfig.Tags = {
   Developer = {
-    Enabled = true,
-    Priority = 1,
     TagText = "[DEVELOPER]",
     TagColor = Color3.fromRGB(100, 255, 100),
     UsernameColor = Color3.fromRGB(255, 255, 255),
     TextColor = Color3.fromRGB(100, 255, 100),
-    ChatBubble = {
-      BackgroundColor = Color3.fromRGB(0, 0, 0),
-      StrokeColor = Color3.fromRGB(100, 255, 100),
-      CornerRadius = 12,
-    },
-  },
-  Owner = {
-    Enabled = true,
-    Priority = 3,
-    TagText = "[Owner]",
-    TagColor = Color3.fromRGB(255, 0, 0),
-    UsernameColor = Color3.fromRGB(231, 19, 19),
-    TextColor = Color3.fromRGB(255, 0, 0),
   },
 }
       </code></pre>
-      <h4>Chat Display Example</h4>
-      <p style="font-family: monospace; background: #1e1e1e; padding: 12px; border-radius: 6px; color: #ddd;">
-        <span style="color: #64ff64; font-weight: bold;">[DEVELOPER]</span>
-        <span style="color: #fff; font-weight: bold;">PlayerName:</span>
-        <span style="color: #64ff64;">Hey everyone, check out the new update!</span>
-      </p>
-      <h4>Server Usage</h4>
+
+      <h4>Usage</h4>
       <pre><code class="language-lua">
 local TagAPI = require(game.ReplicatedStorage.CustomChatTagsAPI)
-
-game.Players.PlayerAdded:Connect(function(player)
-  TagAPI:Give(player, "Developer")
-  TagAPI:Equip(player, "Developer")
-end)
+TagAPI:Give(player, "Developer")
+TagAPI:Equip(player, "Developer")
       </code></pre>
     </section>
 
     <!-- Feature 2: Leaderboard Tags -->
     <section>
-      <h3>2. Leaderboard Tags</h3>
-      <p>
-        Leaderboard tags display dynamic rank positions next to player names. The tag text updates in real-time based on player stats (e.g., top coin holders). Use <code>%s</code> in the tag template to inject rank text.
-      </p>
-      <h4>Example Configuration</h4>
-      <pre><code class="language-lua">
-CustomChatTagsConfig.LeaderboardTags = {
-  TopCoins = {
-    Enabled = true,
-    Priority = 5,
-    TagText = "[💰 Coins #%s]",
-    TagColor = Color3.fromRGB(255, 215, 0),
-    UsernameColor = Color3.fromRGB(255, 215, 0),
-    TextColor = Color3.fromRGB(255, 215, 0),
-    ChatBubble = {
-      StrokeColor = Color3.fromRGB(255, 215, 0),
-      CornerRadius = 12,
-    },
-  },
-}
-      </code></pre>
-      <h4>Chat Display Example</h4>
-      <p style="font-family: monospace; background: #1e1e1e; padding: 12px; border-radius: 6px; color: #ddd;">
+      <h3>Leaderboard Tags</h3>
+      <p>Dynamic rank positions that update in real-time based on player stats. Use <code>%s</code> to inject rank text.</p>
+      
+      <h4>Visual Example</h4>
+      <p style="font-family: monospace; background: #1e1e1e; padding: 10px; border-radius: 6px; color: #ddd;">
         <span style="color: #ffd700; font-weight: bold;">[💰 Coins #1]</span>
         <span style="color: #ffd700; font-weight: bold;">TopPlayer:</span>
         <span style="color: #ffd700;">I'm first place!</span>
       </p>
-      <h4>Server Usage</h4>
+
+      <h4>Config Example</h4>
+      <pre><code class="language-lua">
+CustomChatTagsConfig.LeaderboardTags = {
+  TopCoins = {
+    TagText = "[💰 Coins #%s]",
+    TagColor = Color3.fromRGB(255, 215, 0),
+    UsernameColor = Color3.fromRGB(255, 215, 0),
+    TextColor = Color3.fromRGB(255, 215, 0),
+  },
+}
+      </code></pre>
+
+      <h4>Usage</h4>
       <pre><code class="language-lua">
 local TagAPI = require(game.ReplicatedStorage.CustomChatTagsAPI)
-
--- Give leaderboard tag with dynamic rank text
 TagAPI:GiveLeaderboardTag(player, "TopCoins", "1")
-
--- Update rank when leaderboard changes
 TagAPI:UpdateLeaderboardTag(player, "TopCoins", "2")
       </code></pre>
     </section>
 
     <!-- Feature 3: System Messages -->
     <section>
-      <h3>3. System Messages</h3>
-      <p>
-        System messages are server-wide notifications displayed in chat without a player sender. Perfect for announcements, alerts, errors, or event notifications. Players can toggle visibility per message type.
+      <h3>System Messages</h3>
+      <p>Server-wide notifications without a player sender. Perfect for announcements, alerts, and events.</p>
+      
+      <h4>Visual Example</h4>
+      <p style="font-family: monospace; background: #1e1e1e; padding: 10px; border-radius: 6px; color: #ddd;">
+        <span style="color: #ffff00; font-weight: bold;">[SYSTEM]</span>
+        <span style="color: #fff;">Server restart in 5 minutes!</span>
       </p>
-      <h4>Example Configuration</h4>
+      <p style="font-family: monospace; background: #1e1e1e; padding: 10px; border-radius: 6px; color: #ddd; margin-top: 8px;">
+        <span style="color: #ff6400; font-weight: bold;">[⚠️ ALERT]</span>
+        <span style="color: #fff;">Double XP event starting now!</span>
+      </p>
+
+      <h4>Config Example</h4>
       <pre><code class="language-lua">
 CustomChatTagsConfig.SystemTags = {
   System = {
-    Enabled = true,
     TagText = "[SYSTEM]",
     TagColor = Color3.fromRGB(255, 255, 0),
   },
   Alert = {
-    Enabled = true,
     TagText = "[⚠️ ALERT]",
     TagColor = Color3.fromRGB(255, 100, 0),
   },
-  Success = {
-    Enabled = true,
-    TagText = "[✓ SUCCESS]",
-    TagColor = Color3.fromRGB(0, 255, 100),
-  },
-  Error = {
-    Enabled = true,
-    TagText = "[✗ ERROR]",
-    TagColor = Color3.fromRGB(255, 0, 0),
-  },
 }
       </code></pre>
-      <h4>Chat Display Example</h4>
-      <p style="font-family: monospace; background: #1e1e1e; padding: 12px; border-radius: 6px; color: #ddd;">
-        <span style="color: #ffff00; font-weight: bold;">[SYSTEM]</span>
-        <span style="color: #fff;">Server restart in 5 minutes. Save your progress!</span>
-      </p>
-      <p style="font-family: monospace; background: #1e1e1e; padding: 12px; border-radius: 6px; color: #ddd;">
-        <span style="color: #ff6400; font-weight: bold;">[⚠️ ALERT]</span>
-        <span style="color: #fff;">Double XP event starting now!</span>
-      </p>
-      <h4>Server Usage</h4>
+
+      <h4>Usage</h4>
       <pre><code class="language-lua">
 local TagAPI = require(game.ReplicatedStorage.CustomChatTagsAPI)
+TagAPI:SendSystemMessage("ServerRestart", "System", "Server restart in 5 minutes!")
 
--- Send system message to all players
-local success = TagAPI:SendSystemMessage(
-  "ServerRestart",  -- Unique message name
-  "System",         -- System tag to use
-  "Server restart in 5 minutes. Save your progress!"
-)
-      </code></pre>
-      <h4>Client Usage (Toggle Messages)</h4>
-      <pre><code class="language-lua">
+-- Client can toggle messages
 local ClientAPI = require(game.ReplicatedStorage.CustomChatTagsClientAPI)
-
--- Disable specific system messages
-ClientAPI:UpdateClientSettings({
-  ServerRestart = false,  -- Hide restart warnings
-  EventStart = true,      -- Show event notifications
-})
+ClientAPI:UpdateClientSettings({ ServerRestart = false })
       </code></pre>
     </section>
 
     <section>
       <h2>Key Benefits</h2>
       <ul>
-        <li><strong>Zero Hardcoding:</strong> All tags, colors, and priorities defined in one config table.</li>
-        <li><strong>Automatic Sync:</strong> Tag changes on the server instantly update for all clients.</li>
-        <li><strong>DataStore Persistence:</strong> Player tags, equipped slots, and preferences saved automatically.</li>
-        <li><strong>Rich Styling:</strong> Control text color, bold/italic/underline, stroke thickness, and chat bubble appearance per tag.</li>
-        <li><strong>Dynamic Leaderboard:</strong> Update player ranks in real-time without re-giving tags.</li>
-        <li><strong>Flexible System Messages:</strong> Per-player visibility controls for notifications.</li>
+        <li>Zero hardcoding – all tags defined in one config table</li>
+        <li>Automatic sync – changes update instantly for all clients</li>
+        <li>DataStore persistence – tags and preferences saved automatically</li>
+        <li>Rich styling – control colors, strokes, and chat bubbles per tag</li>
+        <li>Dynamic updates – leaderboard ranks update in real-time</li>
       </ul>
-    </section>
-
-    <section>
-      <h2>Quick Start</h2>
-      <p>Getting started with CCTFF takes just three steps:</p>
-      <ol>
-        <li>Place all CCTFF modules in the correct Roblox locations (ReplicatedStorage, ServerScriptService, StarterPlayerScripts).</li>
-        <li>Edit <code>CustomChatTagsConfig</code> to define your tags, leaderboard tags, and system tags.</li>
-        <li>Call <code>TagAPI:Give(player, "TagName")</code> and <code>TagAPI:Equip(player, "TagName")</code> from your server scripts.</li>
-      </ol>
-      <p>
-        All rendering, formatting, and client updates happen automatically. For detailed API documentation, explore the sidebar navigation for each method's parameters, return values, and usage examples.
-      </p>
     </section>
   </div>
 </main>

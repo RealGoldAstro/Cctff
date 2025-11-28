@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>CCTFF Card Screenshot</title>
+  <title>CCTFF Small Card</title>
   <style>
     body {
       margin: 0;
@@ -11,14 +11,15 @@
       font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
     }
 
+    /* 5:6 ratio (same as 250h x 315w, just bigger) */
     .card {
-      width: 960px;
-      height: 540px;
+      width: 600px;
+      height: 500px;
       background: #020617;
       border-radius: 22px;
       border: 1px solid #1f2937;
-      box-shadow: 0 26px 60px rgba(0,0,0,0.65);
-      padding: 40px 56px;
+      box-shadow: 0 22px 50px rgba(0,0,0,0.65);
+      padding: 32px 32px 28px 32px;
       box-sizing: border-box;
       color: #e5e7eb;
       display: flex;
@@ -30,17 +31,17 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      gap: 32px;
+      gap: 20px;
     }
 
     .text-col {
-      flex: 0 0 55%;
+      flex: 0 0 60%;
     }
 
     .logo-wrap {
-      width: 260px;   /* bigger logo */
-      height: 260px;
-      border-radius: 40px;
+      width: 180px;
+      height: 180px;
+      border-radius: 32px;
       overflow: hidden;
       flex-shrink: 0;
     }
@@ -53,23 +54,23 @@
     }
 
     .title {
-      font-size: 60px;
+      font-size: 42px;
       font-weight: 800;
       letter-spacing: 0.14em;
-      margin-bottom: 26px;
+      margin-bottom: 18px;
     }
 
     .mini-block {
-      margin-top: 10px;
-      font-size: 20px;
-      line-height: 1.45;
+      margin-top: 6px;
+      font-size: 16px;
+      line-height: 1.4;
     }
 
     .mini-block strong {
       display: block;
-      font-size: 22px;
+      font-size: 18px;
       color: #bfdbfe;
-      margin-bottom: 2px;
+      margin-bottom: 1px;
     }
 
     .bottom-row {
@@ -80,14 +81,14 @@
     }
 
     .price {
-      font-size: 46px;
+      font-size: 32px;
       font-weight: 800;
       color: #f9fafb;
     }
 
     .badge {
-      font-size: 18px;
-      padding: 10px 26px;
+      font-size: 14px;
+      padding: 8px 20px;
       border-radius: 999px;
       background: rgba(56,189,248,0.2);
       border: 1px solid rgba(56,189,248,0.75);
@@ -114,7 +115,7 @@
     </div>
 
     <div class="logo-wrap">
-      <img src="Assets/CCTFF_Logo.png" alt="CCTFF Logo">
+      <img src="CCTFF_Logo.png" alt="CCTFF Logo">
     </div>
   </div>
 

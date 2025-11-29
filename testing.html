@@ -20,22 +20,22 @@
       color: #e5e7eb;
     }
     .testing-wrapper {
-      width: 1150px;
-      padding: 32px 40px;
-      border-radius: 28px;
+      width: 1250px;
+      padding: 40px 44px;
+      border-radius: 30px;
       background: radial-gradient(circle at top left, #111827 0%, #020617 55%, #020617 100%);
       border: 1px solid #111827;
-      box-shadow: 0 30px 80px rgba(0,0,0,0.7);
+      box-shadow: 0 34px 90px rgba(0,0,0,0.78);
       box-sizing: border-box;
     }
     .testing-header {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      margin-bottom: 28px;
+      margin-bottom: 30px;
     }
     .testing-title {
-      font-size: 34px;
+      font-size: 36px;
       font-weight: 800;
       letter-spacing: 0.18em;
     }
@@ -43,7 +43,7 @@
       margin-top: 8px;
       font-size: 15px;
       color: #9ca3af;
-      max-width: 540px;
+      max-width: 560px;
     }
     .testing-logo {
       display: flex;
@@ -51,9 +51,9 @@
       gap: 16px;
     }
     .testing-logo-icon {
-      width: 70px;
-      height: 70px;
-      border-radius: 22px;
+      width: 76px;
+      height: 76px;
+      border-radius: 24px;
       overflow: hidden;
     }
     .testing-logo-icon img {
@@ -71,13 +71,13 @@
     .ad-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 18px;
+      gap: 20px;
     }
     .ad-card {
       border-radius: 18px;
       background: rgba(15,23,42,0.97);
       border: 1px solid #1f2937;
-      box-shadow: 0 18px 40px rgba(0,0,0,0.6);
+      box-shadow: 0 20px 46px rgba(0,0,0,0.68);
       padding: 16px 16px 14px 16px;
       box-sizing: border-box;
       display: flex;
@@ -91,13 +91,13 @@
       margin-bottom: 6px;
     }
     .ad-icon {
-      width: 30px;
-      height: 30px;
+      width: 32px;
+      height: 32px;
       border-radius: 999px;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 14px;
+      font-size: 15px;
       background: rgba(37,99,235,0.18);
       color: #93c5fd;
     }
@@ -152,6 +152,22 @@
       border: 1px solid rgba(147,51,234,0.75);
     }
 
+    .ad-preview {
+      margin-bottom: 8px;
+      border-radius: 12px;
+      padding: 8px 10px;
+      background: linear-gradient(135deg, #020617 0%, #020617 40%, #0b1120 100%);
+      border: 1px solid #1f2937;
+      font-size: 11px;
+      line-height: 1.4;
+    }
+    .ad-preview-line {
+      margin-bottom: 3px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
     .ad-points {
       list-style: none;
       padding: 0;
@@ -191,7 +207,7 @@
     <div>
       <div class="testing-title">CCTFF</div>
       <p class="testing-subtitle">
-        Quick visuals for testing and screenshots. Each card focuses on a small part of the chat framework so you can grab different angles for posts.
+        Quick visuals for testing and screenshots. Each card has a tiny chat preview so you can grab different angles for posts.
       </p>
     </div>
     <div class="testing-logo">
@@ -212,6 +228,18 @@
         </div>
         <div class="ad-pill blue">
           <i class="fas fa-sliders-h"></i> CONFIG DRIVEN
+        </div>
+        <div class="ad-preview">
+          <div class="ad-preview-line">
+            <span style="color:#64ff64;font-weight:700;">[DEVELOPER]</span>
+            <span style="color:#ffffff;font-weight:700;margin:0 4px;">PlayerName:</span>
+            <span style="color:#64ff64;">Shipping tonight’s build.</span>
+          </div>
+          <div class="ad-preview-line">
+            <span style="color:#ff4b4b;font-weight:700;">[OWNER]</span>
+            <span style="color:#e71313;font-weight:700;margin:0 4px;">GameOwner:</span>
+            <span style="color:#ff9999;">Welcome to the server.</span>
+          </div>
         </div>
         <p class="ad-tagline">
           Developer, owner, tester, VIP – all defined in one config table and synced to chat + bubbles.
@@ -238,6 +266,14 @@
         <div class="ad-pill purple">
           <i class="fas fa-equals"></i> LIMITS
         </div>
+        <div class="ad-preview">
+          <div class="ad-preview-line">
+            <span style="color:#64ff64;font-weight:700;">[DEV]</span>
+            <span style="color:#9ca3ff;font-weight:700;margin:0 4px;">[TESTER]</span>
+            <span style="color:#ffffff;font-weight:700;margin:0 4px;">PlayerName:</span>
+            <span style="color:#d1d5db;">Max 3 tags equipped.</span>
+          </div>
+        </div>
         <p class="ad-tagline">
           Let players stack multiple tags but keep things readable with a hard slot limit.
         </p>
@@ -257,11 +293,21 @@
     <div class="ad-card">
       <div>
         <div class="ad-header">
-          <div class="ad-icon.green"><i class="fas fa-hourglass-half"></i></div>
+          <div class="ad-icon green"><i class="fas fa-hourglass-half"></i></div>
           <div class="ad-title">Temporary Event Tags</div>
         </div>
         <div class="ad-pill green">
           <i class="fas fa-clock"></i> AUTO EXPIRE
+        </div>
+        <div class="ad-preview">
+          <div class="ad-preview-line">
+            <span style="color:#22c55e;font-weight:700;">[EVENT]</span>
+            <span style="color:#ffffff;font-weight:700;margin:0 4px;">PlayerName:</span>
+            <span style="color:#bbf7d0;">Weekend XP tag active.</span>
+          </div>
+          <div class="ad-preview-line">
+            <span style="color:#9ca3af;">(Auto removes after 48h)</span>
+          </div>
         </div>
         <p class="ad-tagline">
           Give a tag for a weekend event, let it expire later without manual cleanup.
@@ -288,6 +334,17 @@
         <div class="ad-pill gold">
           <i class="fas fa-arrow-up"></i> LIVE RANKS
         </div>
+        <div class="ad-preview">
+          <div class="ad-preview-line">
+            <span style="color:#ffd700;font-weight:700;">[💰 Coins #1]</span>
+            <span style="color:#ffd700;font-weight:700;margin:0 4px;">TopPlayer:</span>
+            <span style="color:#ffeaa0;">Holding first place.</span>
+          </div>
+          <div class="ad-preview-line">
+            <span style="color:#facc15;font-weight:700;">[💰 Coins #2]</span>
+            <span style="color:#fde68a;margin-left:4px;">Closing in…</span>
+          </div>
+        </div>
         <p class="ad-tagline">
           Tags like [💰 Coins #1] follow your stats so top players stand out instantly.
         </p>
@@ -313,6 +370,16 @@
         <div class="ad-pill red">
           <i class="fas fa-bullhorn"></i> CLEAR SIGNALS
         </div>
+        <div class="ad-preview">
+          <div class="ad-preview-line">
+            <span style="color:#ffff66;font-weight:700;">[SYSTEM]</span>
+            <span style="color:#e5faff;margin-left:6px;">Restart in 5 minutes.</span>
+          </div>
+          <div class="ad-preview-line">
+            <span style="color:#ff9500;font-weight:700;">[ALERT]</span>
+            <span style="color:#ffe4e6;margin-left:6px;">Double XP now live.</span>
+          </div>
+        </div>
         <p class="ad-tagline">
           Color‑coded [SYSTEM], [ALERT], [SUCCESS], [ERROR] lines woven into normal chat.
         </p>
@@ -332,11 +399,19 @@
     <div class="ad-card">
       <div>
         <div class="ad-header">
-          <div class="ad-icon.green"><i class="fas fa-toggle-on"></i></div>
+          <div class="ad-icon green"><i class="fas fa-toggle-on"></i></div>
           <div class="ad-title">Player Message Settings</div>
         </div>
         <div class="ad-pill green">
           <i class="fas fa-user-cog"></i> PER PLAYER
+        </div>
+        <div class="ad-preview">
+          <div class="ad-preview-line">
+            <span style="color:#bbf7d0;">[✔] ServerRestart</span>
+          </div>
+          <div class="ad-preview-line">
+            <span style="color:#f97373;">[✖] PromoMessages</span>
+          </div>
         </div>
         <p class="ad-tagline">
           Let players mute some system messages while still seeing the important stuff.
@@ -363,6 +438,14 @@
         <div class="ad-pill purple">
           <i class="fas fa-play-circle"></i> ONE BUTTON
         </div>
+        <div class="ad-preview">
+          <div class="ad-preview-line">
+            <span style="color:#7dd3fc;">[Run ALL API Carousel]</span>
+          </div>
+          <div class="ad-preview-line">
+            <span style="color:#9ca3af;">System → Tags → Leaderboard tests</span>
+          </div>
+        </div>
         <p class="ad-tagline">
           A small in‑game panel that runs all tag, leaderboard, and system APIs in sequence.
         </p>
@@ -388,6 +471,16 @@
         <div class="ad-pill blue">
           <i class="fas fa-key"></i> ACCESS
         </div>
+        <div class="ad-preview">
+          <div class="ad-preview-line">
+            <span style="color:#22c55e;font-weight:700;">[VIP]</span>
+            <span style="color:#e5e7eb;margin-left:6px;">Door opens.</span>
+          </div>
+          <div class="ad-preview-line">
+            <span style="color:#f97373;font-weight:700;">[NO TAG]</span>
+            <span style="color:#9ca3af;margin-left:6px;">“VIP required.”</span>
+          </div>
+        </div>
         <p class="ad-tagline">
           Use tags as keys for VIP doors, menus, boosts, and admin tools with a single HasTag check.
         </p>
@@ -407,11 +500,20 @@
     <div class="ad-card">
       <div>
         <div class="ad-header">
-          <div class="ad-icon.gold"><i class="fas fa-star"></i></div>
+          <div class="ad-icon gold"><i class="fas fa-star"></i></div>
           <div class="ad-title">Achievement Tags</div>
         </div>
         <div class="ad-pill gold">
           <i class="fas fa-flag-checkered"></i> MILESTONES
+        </div>
+        <div class="ad-preview">
+          <div class="ad-preview-line">
+            <span style="color:#fde68a;font-weight:700;">[EXPLORER]</span>
+            <span style="color:#d1fae5;font-weight:700;margin-left:4px;">[CHAMPION]</span>
+          </div>
+          <div class="ad-preview-line">
+            <span style="color:#9ca3af;">Progress tags stacked over time.</span>
+          </div>
         </div>
         <p class="ad-tagline">
           Stackable tags for achievements and long‑term goals so players “wear” their progress.

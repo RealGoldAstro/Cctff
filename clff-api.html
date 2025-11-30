@@ -15,7 +15,7 @@
 </head>
 <body>
     <div class="main-wrapper">
-        <!-- Sidebar (same as clff.html) -->
+        <!-- Sidebar -->
         <aside class="sidebar no-scrollbar">
             <div class="sidebar-inner">
                 <!-- Logo + title -->
@@ -119,85 +119,67 @@
                 <header>
                     <h1>CLFF API Reference</h1>
                     <p>
-                        All CLFF API methods live on <code>_G.CLFF</code> and must be called from server scripts only. 
+                        All CLFF API methods live on de>_G.CLFF</code> and must be called from server scripts only. 
                         The API provides secure stat updates with built-in validation, type checking, and rate limiting.
                     </p>
                 </header>
 
                 <section>
-                    <h2>API Methods</h2>
+                    <h2>API</h2>
                     
-                    <!-- 2-wide grid of cards -->
+                    <!-- 2-wide grid of cards like leaderboard.html -->
                     <div class="card-grid" style="grid-template-columns: repeat(2, minmax(0, 1fr));">
                         <!-- Update -->
-                        <div class="card">
-                            <h3><code>CLFF:Update</code></h3>
+                        <a href="#clff-update" class="card" style="text-decoration:none;">
+                            <h3>de>CLFF:Update</code></h3>
                             <p>Update a stat value with validation and type checking.</p>
-                            <div class="cctff-code-section" style="margin-top: 1rem;">
-                                <pre><code class="language-lua">_G.CLFF:Update(player, "Coins", 5000)</code></pre>
-                            </div>
-                        </div>
+                        </a>
 
                         <!-- Get -->
-                        <div class="card">
-                            <h3><code>CLFF:Get</code></h3>
+                        <a href="#clff-get" class="card" style="text-decoration:none;">
+                            <h3>de>CLFF:Get</code></h3>
                             <p>Retrieve the current value of a stat.</p>
-                            <div class="cctff-code-section" style="margin-top: 1rem;">
-                                <pre><code class="language-lua">local coins = _G.CLFF:Get(player, "Coins")</code></pre>
-                            </div>
-                        </div>
+                        </a>
 
                         <!-- Increment -->
-                        <div class="card">
-                            <h3><code>CLFF:Increment</code></h3>
+                        <a href="#clff-increment" class="card" style="text-decoration:none;">
+                            <h3>de>CLFF:Increment</code></h3>
                             <p>Add or subtract from a numeric stat.</p>
-                            <div class="cctff-code-section" style="margin-top: 1rem;">
-                                <pre><code class="language-lua">_G.CLFF:Increment(player, "Coins", 100)</code></pre>
-                            </div>
-                        </div>
+                        </a>
 
                         <!-- Set -->
-                        <div class="card">
-                            <h3><code>CLFF:Set</code></h3>
+                        <a href="#clff-set" class="card" style="text-decoration:none;">
+                            <h3>de>CLFF:Set</code></h3>
                             <p>Alias for Update() for clarity in code.</p>
-                            <div class="cctff-code-section" style="margin-top: 1rem;">
-                                <pre><code class="language-lua">_G.CLFF:Set(player, "Level", 50)</code></pre>
-                            </div>
-                        </div>
+                        </a>
 
                         <!-- SetDebugMode -->
-                        <div class="card">
-                            <h3><code>CLFF:SetDebugMode</code></h3>
+                        <a href="#clff-setdebugmode" class="card" style="text-decoration:none;">
+                            <h3>de>CLFF:SetDebugMode</code></h3>
                             <p>Enable or disable debug warnings for troubleshooting.</p>
-                            <div class="cctff-code-section" style="margin-top: 1rem;">
-                                <pre><code class="language-lua">_G.CLFF:SetDebugMode(true)</code></pre>
-                            </div>
-                        </div>
+                        </a>
 
                         <!-- SetSortingStat -->
-                        <div class="card">
-                            <h3><code>CLFF:SetSortingStat</code></h3>
+                        <a href="#clff-setsortingstat" class="card" style="text-decoration:none;">
+                            <h3>de>CLFF:SetSortingStat</code></h3>
                             <p>Change which stat determines player order.</p>
-                            <div class="cctff-code-section" style="margin-top: 1rem;">
-                                <pre><code class="language-lua">_G.CLFF:SetSortingStat("Kills")</code></pre>
-                            </div>
-                        </div>
+                        </a>
                     </div>
                 </section>
 
                 <!-- Detailed Method Documentation -->
-                <section>
+                <section id="clff-update">
                     <h2>CLFF:Update</h2>
                     <p>
-                        The <code>CLFF:Update</code> method sets a stat to a specific value with full server-side validation.
+                        The de>CLFF:Update</code> method sets a stat to a specific value with full server-side validation.
                         This is the primary method for updating stats.
                     </p>
 
-                    <h3>Overview</h3>
+                    <h2>Overview</h2>
                     <div class="overview-grid">
                         <div class="overview-item">
                             <div class="overview-label">Execution Context</div>
-                            <div class="overview-value"><code>Server</code></div>
+                            <div class="overview-value">de>Server</code></div>
                         </div>
                         <div class="overview-item">
                             <div class="overview-label">Script Type</div>
@@ -205,7 +187,7 @@
                         </div>
                         <div class="overview-item">
                             <div class="overview-label">Returns</div>
-                            <div class="overview-value"><code>boolean</code></div>
+                            <div class="overview-value">de>boolean</code></div>
                         </div>
                         <div class="overview-item">
                             <div class="overview-label">Side Effects</div>
@@ -213,8 +195,8 @@
                         </div>
                     </div>
 
-                    <h3>Syntax</h3>
-                    <p><code>local success = _G.CLFF:Update(player: Player, statName: string, newValue: number)</code></p>
+                    <h2>Syntax</h2>
+                    <p>de>local success = _G.CLFF:Update(player: Player, statName: string, newValue: number)</code></p>
 
                     <table class="param-table">
                         <thead>
@@ -226,24 +208,24 @@
                         </thead>
                         <tbody>
                             <tr>
-                                <td><code>player</code></td>
-                                <td><code>Player</code></td>
+                                <td>de>player</code></td>
+                                <td>de>Player</code></td>
                                 <td>The player instance whose stat should be updated</td>
                             </tr>
                             <tr>
-                                <td><code>statName</code></td>
-                                <td><code>string</code></td>
+                                <td>de>statName</code></td>
+                                <td>de>string</code></td>
                                 <td>The name of the stat (e.g., "Coins", "Kills")</td>
                             </tr>
                             <tr>
-                                <td><code>newValue</code></td>
-                                <td><code>number</code></td>
+                                <td>de>newValue</code></td>
+                                <td>de>number</code></td>
                                 <td>The new value to set (validated against stat config)</td>
                             </tr>
                         </tbody>
                     </table>
 
-                    <h3>Return Values</h3>
+                    <h2>Return Values</h2>
                     <table class="param-table">
                         <thead>
                             <tr>
@@ -254,21 +236,21 @@
                         </thead>
                         <tbody>
                             <tr>
-                                <td><code>success</code></td>
-                                <td><code>boolean</code></td>
+                                <td>de>success</code></td>
+                                <td>de>boolean</code></td>
                                 <td>True if update succeeded, false if validation failed</td>
                             </tr>
                         </tbody>
                     </table>
 
-                    <h3>Basic Usage</h3>
+                    <h2>Basic Usage</h2>
                     <p>Update a player's coins.</p>
                     <div class="code-block-wrapper">
                         <div class="code-block-header">
                             <span>Lua</span>
                             <button class="copy-btn" onclick="copyCode(this)">Copy</button>
                         </div>
-                        <pre><code>local success = _G.CLFF:Update(player, "Coins", 10000)
+                        <pre>de class="language-lua">local success = _G.CLFF:Update(player, "Coins", 10000)
 
 if success then
     print("Coins updated successfully")
@@ -277,14 +259,14 @@ else
 end</code></pre>
                     </div>
 
-                    <h3>DataStore Integration</h3>
+                    <h2>DataStore Integration</h2>
                     <p>Load saved data and update stats.</p>
                     <div class="code-block-wrapper">
                         <div class="code-block-header">
                             <span>Lua</span>
                             <button class="copy-btn" onclick="copyCode(this)">Copy</button>
                         </div>
-                        <pre><code>local function loadPlayerData(player)
+                        <pre>de class="language-lua">local function loadPlayerData(player)
     local data = DataStore:GetAsync(player.UserId)
     
     if data then
@@ -297,14 +279,14 @@ end</code></pre>
 end</code></pre>
                     </div>
 
-                    <h3>Purchase Handler</h3>
+                    <h2>Purchase Handler</h2>
                     <p>Update stats after a successful purchase.</p>
                     <div class="code-block-wrapper">
                         <div class="code-block-header">
                             <span>Lua</span>
                             <button class="copy-btn" onclick="copyCode(this)">Copy</button>
                         </div>
-                        <pre><code>local function handlePurchase(player, itemPrice)
+                        <pre>de class="language-lua">local function handlePurchase(player, itemPrice)
     local currentCoins = _G.CLFF:Get(player, "Coins")
     
     if currentCoins >= itemPrice then
@@ -323,44 +305,44 @@ end</code></pre>
                     </div>
                 </section>
 
-                <section>
+                <section id="clff-increment">
                     <h2>CLFF:Increment</h2>
                     <p>
-                        The <code>CLFF:Increment</code> method adds or subtracts from a numeric stat. 
+                        The de>CLFF:Increment</code> method adds or subtracts from a numeric stat. 
                         Perfect for rewards, penalties, or continuous stat updates.
                     </p>
 
-                    <h3>Syntax</h3>
-                    <p><code>local success = _G.CLFF:Increment(player: Player, statName: string, amount: number)</code></p>
+                    <h2>Syntax</h2>
+                    <p>de>local success = _G.CLFF:Increment(player: Player, statName: string, amount: number)</code></p>
 
-                    <h3>Basic Usage</h3>
+                    <h2>Basic Usage</h2>
                     <p>Add 100 coins to a player.</p>
                     <div class="code-block-wrapper">
                         <div class="code-block-header">
                             <span>Lua</span>
                             <button class="copy-btn" onclick="copyCode(this)">Copy</button>
                         </div>
-                        <pre><code>_G.CLFF:Increment(player, "Coins", 100)</code></pre>
+                        <pre>de class="language-lua">_G.CLFF:Increment(player, "Coins", 100)</code></pre>
                     </div>
 
-                    <h3>Negative Increment (Decrement)</h3>
+                    <h2>Negative Increment (Decrement)</h2>
                     <p>Subtract coins for a penalty.</p>
                     <div class="code-block-wrapper">
                         <div class="code-block-header">
                             <span>Lua</span>
                             <button class="copy-btn" onclick="copyCode(this)">Copy</button>
                         </div>
-                        <pre><code>_G.CLFF:Increment(player, "Coins", -50)  -- Subtract 50</code></pre>
+                        <pre>de class="language-lua">_G.CLFF:Increment(player, "Coins", -50)  -- Subtract 50</code></pre>
                     </div>
 
-                    <h3>Kill/Death Tracking</h3>
+                    <h2>Kill/Death Tracking</h2>
                     <p>Update combat stats automatically.</p>
                     <div class="code-block-wrapper">
                         <div class="code-block-header">
                             <span>Lua</span>
                             <button class="copy-btn" onclick="copyCode(this)">Copy</button>
                         </div>
-                        <pre><code>-- When player gets a kill
+                        <pre>de class="language-lua">-- When player gets a kill
 _G.CLFF:Increment(killer, "Kills", 1)
 _G.CLFF:Increment(victim, "Deaths", 1)
 
@@ -369,13 +351,13 @@ _G.CLFF:Increment(killer, "Coins", 25)</code></pre>
                     </div>
                 </section>
 
-                <section>
+                <section id="clff-security">
                     <h2>Security & Validation</h2>
                     <p>
                         CLFF includes multiple layers of security to prevent exploits and ensure data integrity.
                     </p>
 
-                    <h3>Built-In Security Features</h3>
+                    <h2>Built-In Security Features</h2>
                     <ul>
                         <li><strong>Server-Only Execution:</strong> API can only be called from server scripts</li>
                         <li><strong>Type Validation:</strong> Checks value matches stat's ValueType (IntValue, NumberValue, etc.)</li>
@@ -385,14 +367,14 @@ _G.CLFF:Increment(killer, "Coins", 25)</code></pre>
                         <li><strong>Rate Limiting:</strong> Throttles updates to prevent spam (configurable via UpdateThrottle)</li>
                     </ul>
 
-                    <h3>Test Panel Security</h3>
-                    <p><strong>Important:</strong> Remove <code>CLFFTestPanel.client.lua</code> before production! This test UI allows players to set their own stats.</p>
+                    <h2>Test Panel Security</h2>
+                    <p><strong>Important:</strong> Remove de>CLFFTestPanel.client.lua</code> before production! This test UI allows players to set their own stats.</p>
 
                     <div class="code-block-wrapper">
                         <div class="code-block-header">
                             <span>Files to Delete Before Release</span>
                         </div>
-                        <pre><code>❌ DELETE THESE:
+                        <pre>de>❌ DELETE THESE:
 - ServerScriptService/CLFF/TestCommands.server.lua
 - ServerScriptService/CLFF/CLFFBenchmark.server.lua  
 - StarterPlayerScripts/CLFF/CLFFTestPanel.client.lua
@@ -404,7 +386,7 @@ _G.CLFF:Increment(killer, "Coins", 25)</code></pre>
                     </div>
                 </section>
 
-                <section>
+                <section id="clff-legacy">
                     <h2>Legacy API Compatibility</h2>
                     <p>
                         For backwards compatibility, old method names are still supported:
@@ -419,20 +401,20 @@ _G.CLFF:Increment(killer, "Coins", 25)</code></pre>
                         </thead>
                         <tbody>
                             <tr>
-                                <td><code>CLFF:Update()</code></td>
-                                <td><code>CLFF:UpdateStat()</code></td>
+                                <td>de>CLFF:Update()</code></td>
+                                <td>de>CLFF:UpdateStat()</code></td>
                             </tr>
                             <tr>
-                                <td><code>CLFF:Get()</code></td>
-                                <td><code>CLFF:GetStat()</code></td>
+                                <td>de>CLFF:Get()</code></td>
+                                <td>de>CLFF:GetStat()</code></td>
                             </tr>
                             <tr>
-                                <td><code>CLFF:Increment()</code></td>
-                                <td><code>CLFF:IncrementStat()</code></td>
+                                <td>de>CLFF:Increment()</code></td>
+                                <td>de>CLFF:IncrementStat()</code></td>
                             </tr>
                             <tr>
-                                <td><code>CLFF:Set()</code></td>
-                                <td><code>CLFF:SetStat()</code></td>
+                                <td>de>CLFF:Set()</code></td>
+                                <td>de>CLFF:SetStat()</code></td>
                             </tr>
                         </tbody>
                     </table>
@@ -459,7 +441,7 @@ _G.CLFF:Increment(killer, "Coins", 25)</code></pre>
                 const hidden = target.classList.contains('hidden');
                 target.classList.toggle('hidden', !hidden);
                 if (chevron) {
-                    chevron.classList.toggleopen', hidden);
+                    chevron.classList.toggle('open', hidden);
                 }
             });
         });

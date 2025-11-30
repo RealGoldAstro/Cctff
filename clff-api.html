@@ -122,86 +122,125 @@
         </div>
     </aside>
 
-    <!-- Main content -->
-    <main class="content-wrapper">
-        <div class="content-inner">
-            <header>
-                <h1>CLFF API Reference</h1>
-                <p>
-                    All CLFF API methods live on de>_G.CLFF</code> and must be called from server scripts only.
-                    The API provides secure stat updates with built-in validation, type checking, and rate limiting.
-                </p>
-            </header>
+<main class="content-wrapper">
+    <div class="content-inner">
+        <!-- Header -->
+        <header>
+            <h1>CLFF API Reference</h1>
+            <p>
+                All CLFF API methods live on de>_G.CLFF</code> and must be called from server scripts only.
+                The API provides secure stat updates with built-in validation, type checking, and rate limiting.
+            </p>
+        </header>
 
-            <!-- API Cards -->
-            <section>
-                <h2>API</h2>
-                <div class="card-grid" style="grid-template-columns: repeat(2, minmax(0, 1fr));">
-                    <a href="#clff-update" class="card" style="text-decoration:none;">
-                        <h3>de>CLFF:Update</code></h3>
-                        <p>Set a stat to a specific value with validation.</p>
-                    </a>
-                    <a href="#clff-get" class="card" style="text-decoration:none;">
-                        <h3>de>CLFF:Get</code></h3>
-                        <p>Read the current value of a stat.</p>
-                    </a>
-                    <a href="#clff-increment" class="card" style="text-decoration:none;">
-                        <h3>de>CLFF:Increment</code></h3>
-                        <p>Add or subtract from a numeric stat.</p>
-                    </a>
-                    <a href="#clff-set" class="card" style="text-decoration:none;">
-                        <h3>de>CLFF:Set</code></h3>
-                        <p>Alias for <e>Update</code> for clearer intent.</p>
-                    </a>
-                    <a href="#clff-setdebugmode" class="card" style="text-decoration:none;">
-                        <h3>de>CLFF:SetDebugMode</code></h3>
-                        <p>Toggle internal debug logging.</p>
-                    </a>
-                    <a href="#clff-setsortingstat" class="card" style="text-decoration:none;">
-                        <h3>de>CLFF:SetSortingStat</code></h3>
-                        <p>Pick which stat drives sort order.</p>
-                    </a>
-                </div>
-            </section>
+        <!-- API Method Cards -->
+        <section>
+            <h2>API</h2>
+            <div class="card-grid" style="grid-template-columns: repeat(2, minmax(0, 1fr));">
+                <!-- Update -->
+                <a href="#clff-update" class="card" style="text-decoration:none;">
+                    <h3>de>CLFF:Update</code></h3>
+                    <p>Set a stat to a specific value with validation.</p>
+                    <span class="card-link">
+                        Jump to method &amp; use cases <i class="fas fa-arrow-right"></i>
+                    </span>
+                </a>
 
-            <!-- CLFF:Update -->
-            <section id="clff-update">
-                <h2>CLFF:Update</h2>
-                <p>
-                    The de>CLFF:Update</code> method sets a stat to an exact value with full server-side validation and rate limiting.
-                </p>
+                <!-- Get -->
+                <a href="#clff-get" class="card" style="text-decoration:none;">
+                    <h3>de>CLFF:Get</code></h3>
+                    <p>Read the current value of a stat.</p>
+                    <span class="card-link">
+                        Jump to method &amp; use cases <i class="fas fa-arrow-right"></i>
+                    </span>
+                </a>
 
-                <h3>Syntax</h3>
+                <!-- Increment -->
+                <a href="#clff-increment" class="card" style="text-decoration:none;">
+                    <h3>de>CLFF:Increment</code></h3>
+                    <p>Add or subtract from a numeric stat.</p>
+                    <span class="card-link">
+                        Jump to method &amp; use cases <i class="fas fa-arrow-right"></i>
+                    </span>
+                </a>
+
+                <!-- Set -->
+                <a href="#clff-set" class="card" style="text-decoration:none;">
+                    <h3>de>CLFF:Set</code></h3>
+                    <p>Alias for de>Update</code> for clearer intent.</p>
+                    <span class="card-link">
+                        Jump to method &amp; use cases <i class="fas fa-arrow-right"></i>
+                    </span>
+                </a>
+
+                <!-- SetDebugMode -->
+                <a href="#clff-setdebugmode" class="card" style="text-decoration:none;">
+                    <h3>de>CLFF:SetDebugMode</code></h3>
+                    <p>Toggle internal debug logging.</p>
+                    <span class="card-link">
+                        Jump to method &amp; use cases <i class="fas fa-arrow-right"></i>
+                    </span>
+                </a>
+
+                <!-- SetSortingStat -->
+                <a href="#clff-setsortingstat" class="card" style="text-decoration:none;">
+                    <h3>de>CLFF:SetSortingStat</code></h3>
+                    <p>Choose which stat drives sort order.</p>
+                    <span class="card-link">
+                        Jump to method &amp; use cases <i class="fas fa-arrow-right"></i>
+                    </span>
+                </a>
+            </div>
+        </section>
+
+        <!-- CLFF:Update -->
+        <section id="clff-update">
+            <h2>CLFF:Update</h2>
+            <p>
+                The de>CLFF:Update</code> method sets a stat to a specific value with full server-side validation and throttling.
+            </p>
+
+            <!-- Info card -->
+            <div class="card">
+                <h3>Method Details</h3>
+
+                <h4>Syntax</h4>
                 <p>de>local success = _G.CLFF:Update(player: Player, statName: string, newValue: number)</code></p>
 
                 <table class="param-table">
                     <thead>
-                    <tr>
-                        <th>Parameter</th>
-                        <th>Type</th>
-                        <th>Description</th>
-                    </tr>
+                        <tr>
+                            <th>Parameter</th>
+                            <th>Type</th>
+                            <th>Description</th>
+                        </tr>
                     </thead>
                     <tbody>
-                    <tr>
-                        <td>de>player</code></td>
-                        <td>de>Player</code></td>
-                        <td>Player whose stat is being updated.</td>
-                    </tr>
-                    <tr>
-                        <td>de>statName</code></td>
-                        <td>de>string</code></td>
-                        <td>Name of the stat (must exist in de>CLFFConfig.Stats</code>).</td>
-                    </tr>
-                    <tr>
-                        <td>de>newValue</code></td>
-                        <td>de>number</code></td>
-                        <td>New value to set, validated against type and limits.</td>
-                    </tr>
+                        <tr>
+                            <td>de>player</code></td>
+                            <td>de>Player</code></td>
+                            <td>Player whose stat should be updated.</td>
+                        </tr>
+                        <tr>
+                            <td>de>statName</code></td>
+                            <td>de>string</code></td>
+                            <td>Stat name defined in de>CLFFConfig.Stats</code> (e.g. de>"Coins"</code>).</td>
+                        </tr>
+                        <tr>
+                            <td>de>newValue</code></td>
+                            <td>de>number</code></td>
+                            <td>New value to assign to the stat.</td>
+                        </tr>
                     </tbody>
                 </table>
+            </div>
 
-                <h3>Basic Usage</h3>
+            <!-- Use cases card -->
+            <div class="card" id="clff-update-usecases">
+                <h3>Use Cases</h3>
+
+                <h4>1. Basic set with checks</h4>
+                <p>Set the player's coins and handle failure cases cleanly.</p>
                 <div class="code-block-wrapper">
                     <div class="code-block-header">
                         <span>Lua</span>
@@ -216,7 +255,8 @@ else
 end</code></pre>
                 </div>
 
-                <h3>DataStore Load</h3>
+                <h4>2. Load from DataStore</h4>
+                <p>Apply saved values to CLFF stats when the player joins.</p>
                 <div class="code-block-wrapper">
                     <div class="code-block-header">
                         <span>Lua</span>
@@ -238,7 +278,8 @@ game.Players.PlayerAdded:Connect(function(player)
 end)</code></pre>
                 </div>
 
-                <h3>Purchase Flow</h3>
+                <h4>3. Purchase handler</h4>
+                <p>Deduct coins when the player buys an item.</p>
                 <div class="code-block-wrapper">
                     <div class="code-block-header">
                         <span>Lua</span>
@@ -259,19 +300,28 @@ end)</code></pre>
     return true, "Purchase successful"
 end</code></pre>
                 </div>
-            </section>
+            </div>
+        </section>
 
-            <!-- CLFF:Get -->
-            <section id="clff-get">
-                <h2>CLFF:Get</h2>
-                <p>
-                    The de>CLFF:Get</code> method returns the current numeric value for a stat, or de>nil</code> if missing.
-                </p>
+        <!-- CLFF:Get -->
+        <section id="clff-get">
+            <h2>CLFF:Get</h2>
+            <p>
+                The de>CLFF:Get</code> method returns the current numeric value of a stat, or de>nil</code> if it doesn't exist.
+            </p>
 
-                <h3>Syntax</h3>
+            <div class="card">
+                <h3>Method Details</h3>
+
+                <h4>Syntax</h4>
                 <p>de>local value = _G.CLFF:Get(player: Player, statName: string)</code></p>
+            </div>
 
-                <h3>Check Balance</h3>
+            <div class="card" id="clff-get-usecases">
+                <h3>Use Cases</h3>
+
+                <h4>1. Show current balance</h4>
+                <p>Read and print the player's coin balance.</p>
                 <div class="code-block-wrapper">
                     <div class="code-block-header">
                         <span>Lua</span>
@@ -286,7 +336,8 @@ else
 end</code></pre>
                 </div>
 
-                <h3>Gate Access</h3>
+                <h4>2. Gate area by level</h4>
+                <p>Deny access to an area if the player is under a required level.</p>
                 <div class="code-block-wrapper">
                     <div class="code-block-header">
                         <span>Lua</span>
@@ -303,19 +354,28 @@ local function canEnterArea(player)
     end
 end</code></pre>
                 </div>
-            </section>
+            </div>
+        </section>
 
-            <!-- CLFF:Increment -->
-            <section id="clff-increment">
-                <h2>CLFF:Increment</h2>
-                <p>
-                    The de>CLFF:Increment</code> method adjusts a numeric stat by a delta. Use negative values to subtract.
-                </p>
+        <!-- CLFF:Increment -->
+        <section id="clff-increment">
+            <h2>CLFF:Increment</h2>
+            <p>
+                The de>CLFF:Increment</code> method adjusts a numeric stat by a delta. Use negative values to subtract.
+            </p>
 
-                <h3>Syntax</h3>
+            <div class="card">
+                <h3>Method Details</h3>
+
+                <h4>Syntax</h4>
                 <p>de>local success = _G.CLFF:Increment(player: Player, statName: string, amount: number)</code></p>
+            </div>
 
-                <h3>Reward Example</h3>
+            <div class="card" id="clff-increment-usecases">
+                <h3>Use Cases</h3>
+
+                <h4>1. Reward for kills</h4>
+                <p>Give coins and increment kills when the player defeats an enemy.</p>
                 <div class="code-block-wrapper">
                     <div class="code-block-header">
                         <span>Lua</span>
@@ -326,7 +386,8 @@ _G.CLFF:Increment(player, "Coins", 100)
 _G.CLFF:Increment(player, "Kills", 1)</code></pre>
                 </div>
 
-                <h3>Penalty Example</h3>
+                <h4>2. Death penalty</h4>
+                <p>Subtract 10% of the player's coins when they die.</p>
                 <div class="code-block-wrapper">
                     <div class="code-block-header">
                         <span>Lua</span>
@@ -339,7 +400,8 @@ _G.CLFF:Increment(player, "Kills", 1)</code></pre>
 end</code></pre>
                 </div>
 
-                <h3>Daily Bonus</h3>
+                <h4>3. Daily login bonus</h4>
+                <p>Give increasing rewards based on the player's streak.</p>
                 <div class="code-block-wrapper">
                     <div class="code-block-header">
                         <span>Lua</span>
@@ -351,19 +413,28 @@ end</code></pre>
     _G.CLFF:Increment(player, "Coins", base + bonus)
 end</code></pre>
                 </div>
-            </section>
+            </div>
+        </section>
 
-            <!-- CLFF:Set -->
-            <section id="clff-set">
-                <h2>CLFF:Set</h2>
-                <p>
-                    <e>CLFF:Set</code> is an alias for de>CLFF:Update</code>, useful when you want the intent “set” to be explicit.
-                </p>
+        <!-- CLFF:Set -->
+        <section id="clff-set">
+            <h2>CLFF:Set</h2>
+            <p>
+                de>CLFF:Set</code> is a convenience alias for de>CLFF:Update</code>, useful when you want code to read “set stat”.
+            </p>
 
-                <h3>Syntax</h3>
+            <div class="card">
+                <h3>Method Details</h3>
+
+                <h4>Syntax</h4>
                 <p>de>local success = _G.CLFF:Set(player: Player, statName: string, value: number)</code></p>
+            </div>
 
-                <h3>Reset Stats</h3>
+            <div class="card" id="clff-set-usecases">
+                <h3>Use Cases</h3>
+
+                <h4>1. Reset player stats</h4>
+                <p>Restore all stats back to default values.</p>
                 <div class="code-block-wrapper">
                     <div class="code-block-header">
                         <span>Lua</span>
@@ -376,19 +447,49 @@ end</code></pre>
     _G.CLFF:Set(player, "Level", 1)
 end</code></pre>
                 </div>
-            </section>
 
-            <!-- CLFF:SetDebugMode -->
-            <section id="clff-setdebugmode">
-                <h2>CLFF:SetDebugMode</h2>
-                <p>
-                    <e>CLFF:SetDebugMode</code> enables or disables internal debug logging for CLFF.
-                </p>
+                <h4>2. Admin override</h4>
+                <p>Allow admins to set exact values for debugging or support.</p>
+                <div class="code-block-wrapper">
+                    <div class="code-block-header">
+                        <span>Lua</span>
+                        <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                    </div>
+                    <pre>de class="language-lua">local function adminSetStat(admin, target, statName, value)
+    if not isAdmin(admin) then
+        return false, "No permission"
+    end
 
-                <h3>Syntax</h3>
+    local ok = _G.CLFF:Set(target, statName, value)
+    if ok then
+        return true, "Set " .. statName .. " to " .. value
+    else
+        return false, "Failed to set stat"
+    end
+end</code></pre>
+                </div>
+            </div>
+        </section>
+
+        <!-- CLFF:SetDebugMode -->
+        <section id="clff-setdebugmode">
+            <h2>CLFF:SetDebugMode</h2>
+            <p>
+                de>CLFF:SetDebugMode</code> toggles CLFF's internal logging for debugging.
+            </p>
+
+            <div class="card">
+                <h3>Method Details</h3>
+
+                <h4>Syntax</h4>
                 <p>de>_G.CLFF:SetDebugMode(enabled: boolean)</code></p>
+            </div>
 
-                <h3>Studio Only</h3>
+            <div class="card" id="clff-setdebugmode-usecases">
+                <h3>Use Cases</h3>
+
+                <h4>1. Enable in Studio only</h4>
+                <p>Turn on verbose logging while testing locally.</p>
                 <div class="code-block-wrapper">
                     <div class="code-block-header">
                         <span>Lua</span>
@@ -402,19 +503,28 @@ else
     _G.CLFF:SetDebugMode(false)
 end</code></pre>
                 </div>
-            </section>
+            </div>
+        </section>
 
-            <!-- CLFF:SetSortingStat -->
-            <section id="clff-setsortingstat">
-                <h2>CLFF:SetSortingStat</h2>
-                <p>
-                    <e>CLFF:SetSortingStat</code> picks which stat is used to sort players in the CLFF leaderboard UI.
-                </p>
+        <!-- CLFF:SetSortingStat -->
+        <section id="clff-setsortingstat">
+            <h2>CLFF:SetSortingStat</h2>
+            <p>
+                de>CLFF:SetSortingStat</code> selects which stat CLFF uses to sort players in the leaderboard UI.
+            </p>
 
-                <h3>Syntax</h3>
+            <div class="card">
+                <h3>Method Details</h3>
+
+                <h4>Syntax</h4>
                 <p>de>local success = _G.CLFF:SetSortingStat(statName: string)</code></p>
+            </div>
 
-                <h3>Example</h3>
+            <div class="card" id="clff-setsortingstat-usecases">
+                <h3>Use Cases</h3>
+
+                <h4>1. Sort by kills</h4>
+                <p>Switch sort order from coins to kills.</p>
                 <div class="code-block-wrapper">
                     <div class="code-block-header">
                         <span>Lua</span>
@@ -425,9 +535,26 @@ if ok then
     print("Now sorting by Kills")
 end</code></pre>
                 </div>
-            </section>
-        </div>
-    </main>
+
+                <h4>2. Event-specific sorting</h4>
+                <p>Sort by different stats during limited-time events.</p>
+                <div class="code-block-wrapper">
+                    <div class="code-block-header">
+                        <span>Lua</span>
+                        <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                    </div>
+                    <pre>de class="language-lua">local function startCoinsEvent()
+    _G.CLFF:SetSortingStat("Coins")
+end
+
+local function startWinsEvent()
+    _G.CLFF:SetSortingStat("Wins")
+end</code></pre>
+                </div>
+            </div>
+        </section>
+    </div>
+</main>
 </div>
 
 <script>

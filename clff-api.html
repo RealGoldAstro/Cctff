@@ -343,6 +343,135 @@ end</code></pre>
                         </div>
                     </div>
                 </section>
+
+                <!-- Additional use cases sections for CLFF:Set, CLFF:SetDebugMode, and CLFF:SetSortingStat -->
+
+<!-- CLFF:Set -->
+<section id="clff-set">
+  <h2>CLFF:Set</h2>
+  <p><code>CLFF:Set</code> is a convenience alias for <code>CLFF:Update</code>, useful when you want code to read like setting a stat.</p>
+
+  <div class="card">
+    <h3>Method Details</h3>
+    <h4>Syntax</h4>
+    <p><strong>local success = G.CLFF:Set(player: Player, statName: string, value: number)</strong></p>
+  </div>
+
+  <div class="card" id="clff-set-usecases">
+    <h3>Use Cases</h3>
+
+    <h4>1. Reset player stats</h4>
+    <p>Restore all stats back to their default values.</p>
+    <div class="code-block-wrapper">
+      <div class="code-block-header">
+        <span>Lua</span>
+        <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+      </div>
+      <pre><code class="language-lua">local function resetStats(player)
+  G.CLFF:Set(player, "Coins", 0)
+  G.CLFF:Set(player, "Kills", 0)
+  G.CLFF:Set(player, "Deaths", 0)
+  G.CLFF:Set(player, "Level", 1)
+end</code></pre>
+    </div>
+
+    <h4>2. Admin override</h4>
+    <p>Allow admins to set exact values for debugging or support.</p>
+    <div class="code-block-wrapper">
+      <div class="code-block-header">
+        <span>Lua</span>
+        <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+      </div>
+      <pre><code class="language-lua">local function adminSetStat(admin, target, statName, value)
+  if not isAdmin(admin) then return false, "No permission" end
+  local ok = G.CLFF:Set(target, statName, value)
+  if ok then
+    return true, "Set " .. statName .. " to " .. value
+  else
+    return false, "Failed to set stat"
+  end
+end</code></pre>
+    </div>
+  </div>
+</section>
+
+<!-- CLFF:SetDebugMode -->
+<section id="clff-setdebugmode">
+  <h2>CLFF:SetDebugMode</h2>
+  <p><code>CLFF:SetDebugMode</code> toggles CLFF's internal logging for debugging purposes.</p>
+
+  <div class="card">
+    <h3>Method Details</h3>
+    <h4>Syntax</h4>
+    <p><strong>G.CLFF:SetDebugMode(enabled: boolean)</strong></p>
+  </div>
+
+  <div class="card" id="clff-setdebugmode-usecases">
+    <h3>Use Cases</h3>
+
+    <h4>1. Enable in Studio only</h4>
+    <p>Toggle verbose logging while testing locally in Studio.</p>
+    <div class="code-block-wrapper">
+      <div class="code-block-header">
+        <span>Lua</span>
+        <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+      </div>
+      <pre><code class="language-lua">local RunService = game:GetService("RunService")
+
+if RunService:IsStudio() then
+  G.CLFF:SetDebugMode(true)
+else
+  G.CLFF:SetDebugMode(false)
+end</code></pre>
+    </div>
+  </div>
+</section>
+
+<!-- CLFF:SetSortingStat -->
+<section id="clff-setsortingstat">
+  <h2>CLFF:SetSortingStat</h2>
+  <p><code>CLFF:SetSortingStat</code> selects which stat CLFF uses to sort players in the leaderboard UI.</p>
+
+  <div class="card">
+    <h3>Method Details</h3>
+    <h4>Syntax</h4>
+    <p><strong>local success = G.CLFF:SetSortingStat(statName: string)</strong></p>
+  </div>
+
+  <div class="card" id="clff-setsortingstat-usecases">
+    <h3>Use Cases</h3>
+
+    <h4>1. Sort by kills</h4>
+    <p>Switch sort order from coins to kills.</p>
+    <div class="code-block-wrapper">
+      <div class="code-block-header">
+        <span>Lua</span>
+        <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+      </div>
+      <pre><code class="language-lua">local ok = G.CLFF:SetSortingStat("Kills")
+if ok then
+  print("Now sorting by Kills")
+end</code></pre>
+    </div>
+
+    <h4>2. Event-specific sorting</h4>
+    <p>Sort by different stats during limited-time events.</p>
+    <div class="code-block-wrapper">
+      <div class="code-block-header">
+        <span>Lua</span>
+        <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+      </div>
+      <pre><code class="language-lua">local function startCoinsEvent()
+  G.CLFF:SetSortingStat("Coins")
+end
+
+local function startWinsEvent()
+  G.CLFF:SetSortingStat("Wins")
+end</code></pre>
+    </div>
+  </div>
+</section>
+
                 
                 <!-- Continue pattern for remaining methods... (Set, SetDebugMode, SetSortingStat) -->
                 <!-- [Truncated for brevity - full implementation follows exact same pattern] -->

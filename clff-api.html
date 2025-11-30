@@ -236,28 +236,6 @@ game.Players.PlayerAdded:Connect(function(player)
     end
 end)</code></pre>
                 </div>
-
-                <h3>Purchase System</h3>
-                <div class="code-block-wrapper">
-                    <div class="code-block-header">
-                        <span>Lua</span>
-                        <button class="copy-btn" onclick="copyCode(this)">Copy</button>
-                    </div>
-                    <pre>de class="language-lua">local function handlePurchase(player, itemName, itemPrice)
-    local coins = _G.CLFF:Get(player, "Coins")
-    if not coins or coins < itemPrice then
-        return false, "Not enough coins"
-    end
-
-    local success = _G.CLFF:Update(player, "Coins", coins - itemPrice)
-    if success then
-        giveItem(player, itemName)
-        return true, "Purchase successful"
-    else
-        return false, "Failed to update coins"
-    end
-end</code></pre>
-                </div>
             </section>
 
             <!-- CLFF:Get -->
@@ -284,24 +262,6 @@ else
     warn("Failed to read coins for " .. player.Name)
 end</code></pre>
                 </div>
-
-                <h3>Permission Gate</h3>
-                <div class="code-block-wrapper">
-                    <div class="code-block-header">
-                        <span>Lua</span>
-                        <button class="copy-btn" onclick="copyCode(this)">Copy</button>
-                    </div>
-                    <pre>de class="language-lua">local REQUIRED_LEVEL = 10
-
-local function canEnterArea(player)
-    local level = _G.CLFF:Get(player, "Level")
-    if level and level >= REQUIRED_LEVEL then
-        return true
-    else
-        return false, "You need level " .. REQUIRED_LEVEL .. " to enter"
-    end
-end</code></pre>
-                </div>
             </section>
 
             <!-- CLFF:Increment -->
@@ -324,19 +284,6 @@ end</code></pre>
                     <pre>de class="language-lua">-- Player defeats an enemy
 _G.CLFF:Increment(player, "Coins", 100)
 _G.CLFF:Increment(player, "Kills", 1)</code></pre>
-                </div>
-
-                <h3>Penalty Example</h3>
-                <div class="code-block-wrapper">
-                    <div class="code-block-header">
-                        <span>Lua</span>
-                        <button class="copy-btn" onclick="copyCode(this)">Copy</button>
-                    </div>
-                    <pre>de class="language-lua">local function applyDeathPenalty(player)
-    local coins = _G.CLFF:Get(player, "Coins") or 0
-    local penalty = math.floor(coins * 0.1)
-    _G.CLFF:Increment(player, "Coins", -penalty)
-end</code></pre>
                 </div>
             </section>
 
@@ -368,9 +315,7 @@ end</code></pre>
             <!-- CLFF:SetDebugMode -->
             <section id="clff-setdebugmode">
                 <h2>CLFF:SetDebugMode</h2>
-                <p>
-                    Enable or disable debug logging inside CLFF.
-                </p>
+                <p>Enable or disable debug logging inside CLFF.</p>
 
                 <h3>Syntax</h3>
                 <p>de>_G.CLFF:SetDebugMode(enabled: boolean)</code></p>
@@ -394,9 +339,7 @@ end</code></pre>
             <!-- CLFF:SetSortingStat -->
             <section id="clff-setsortingstat">
                 <h2>CLFF:SetSortingStat</h2>
-                <p>
-                    Change which stat is used to sort players in the CLFF leaderboard UI.
-                </p>
+                <p>Change which stat is used to sort players in the CLFF leaderboard UI.</p>
 
                 <h3>Syntax</h3>
                 <p>de>local success = _G.CLFF:SetSortingStat(statName: string)</code></p>
@@ -413,7 +356,6 @@ if ok then
 end</code></pre>
                 </div>
             </section>
-
         </div>
     </main>
 </div>
